@@ -2,10 +2,11 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localho
 
 export const ROUTES = {
   HOME: '/',
-  ABOUT: '/about',
-  CONTACT: '/contact',
-  LOGIN: '/login',
-  DASHBOARD: '/dashboard',
+  MACLENIN_CONCEPT: '/maclenin-concept',
+  PARTY_ROLE: '/party-role',
+  MUSEUM: '/museum',
+  QUIZ: '/quiz',
+  CHATBOT: '/chatbot',
 };
 
 export const STORAGE_KEYS = {

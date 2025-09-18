@@ -9,8 +9,11 @@ const Header = () => {
 
   const navigation = [
     { name: 'Trang chủ', href: ROUTES.HOME },
-    { name: 'Giới thiệu', href: ROUTES.ABOUT },
-    { name: 'Liên hệ', href: ROUTES.CONTACT },
+    { name: 'Khái niệm', href: ROUTES.MACLENIN_CONCEPT },
+    { name: 'Vai trò Đảng', href: ROUTES.PARTY_ROLE },
+    { name: 'Bảo tàng', href: ROUTES.MUSEUM },
+    { name: 'Quiz', href: ROUTES.QUIZ },
+    { name: 'Chatbot AI', href: ROUTES.CHATBOT },
   ];
 
   const isActiveLink = (href) => {
