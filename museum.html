@@ -77,7 +77,6 @@
         }
 
         #start-button {
-            margin-top: 30px;
             padding: 10px 30px;
             font-size: 1.2em;
             cursor: pointer;
@@ -111,12 +110,11 @@
         /* Panel thông tin tranh */
         #info-panel {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 600px;
-            max-height: 80%;
+            top: 50px;
+            left: 40px;
+            width: 360px;
+            max-width: 90vw;
+            max-height: 80vh;
             background: rgba(30, 30, 30, 0.95);
             color: white;
             padding: 25px;
@@ -190,7 +188,10 @@
                     Click chuột trái (Xem/Nghe Tranh), E (Đóng thông tin)
                 </div>
             </div>
-            <button id="start-button">BẮT ĐẦU</button>
+            <div style="display: flex; gap: 16px; justify-content: center; margin-top: 30px;">
+                <button id="start-button" style="padding: 10px 30px; font-size: 1.2em; min-width: 160px; height: 48px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; transition: background-color 0.3s; font-family: inherit; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">Bắt đầu</button>
+                <button id="back-button" style="padding: 10px 30px; font-size: 1.2em; min-width: 160px; height: 48px; cursor: pointer; background-color: #ff9800; color: white; border: none; border-radius: 5px; transition: background-color 0.3s; font-family: inherit; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">Quay lại</button>
+            </div>
         </div>
     </div>
 
@@ -204,7 +205,7 @@
     <div id="info-panel">
         <h3 id="art-title">Tiêu đề Tranh</h3>
         <p id="art-description">Mô tả chi tiết về bức tranh.</p>
-        <button id="close-info-button">Đóng (Phím E)</button>
+            <button id="close-info-button">Đóng (Phím E)</button>
     </div>
 
     <script>
@@ -282,23 +283,23 @@
             //const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
             // Vật liệu Tường trước/sau cửa (Tối hơn - Dùng texture nhưng tối màu hơn)
             //const darkerWallMat = new THREE.MeshLambertMaterial({ map: wallTex, color: 0xAAAAAA });
-            
 
-                        // **THIẾT KẾ VẬT LIỆU MỚI CHO BẢO TÀNG**
-            
+
+            // **THIẾT KẾ VẬT LIỆU MỚI CHO BẢO TÀNG**
+
             // Mã màu: Vàng nhạt, ấm (Warm Pale Yellow), gợi nhớ màu tường nhà cổ: 0xFBE7C6
-            const lightYellowColor = 0xCDB38B; 
+            const lightYellowColor = 0xCDB38B;
             // Mã màu: Vàng nhạt tối hơn một chút cho tường cửa: 0xE0D0B0
-            const darkerYellowColor = 0xCDB38B; 
+            const darkerYellowColor = 0xCDB38B;
 
             // Vật liệu Tường Chính (CHỈ DÙNG MÀU ĐƠN SẮC VÀNG NHẠT)
-            const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor }); 
-            
+            const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
+
             // Vật liệu Trần (Màu trắng NHẠT do bạn yêu cầu: 0xCFCFCF)
-            const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF }); 
-            
+            const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
+
             // Vật liệu Tường trước/sau cửa (Màu Vàng Nhạt Tối Hơn)
-            const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor }); 
+            const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
 
 
             // ==== TƯỜNG PHÒNG 1 (DÙNG VẬT LIỆU MỚI) ====
@@ -349,6 +350,10 @@
 
             // Bắt sự kiện bắt đầu
             document.getElementById("start-button").addEventListener("click", () => controls.lock());
+            // Sự kiện nút Quay lại
+            document.getElementById("back-button").addEventListener("click", () => {
+                window.location.href = "/";
+            });
             // Cập nhật trạng thái khóa
             controls.addEventListener("lock", () => {
                 document.getElementById("blocker").style.display = "none";
@@ -658,7 +663,7 @@
             addArtPiece(roomOffsetX, yPos, zFront, Math.PI, largeArtW, largeArtH, "Đại hội Xô viết toàn Liên bang lần thứ nhất tại Moscow (tháng 12 năm 1922)", "content_room2/12-1922.png",
                 "Sự kiện pháp lý tối cao này khai sinh ra Liên bang Cộng hòa Xã hội chủ nghĩa Xô viết (Liên Xô), được tổ chức tại Nhà hát Bolshoi, Moscow. Sau khi Nội chiến chấm dứt, đây là nơi các phái đoàn từ bốn nước cộng hòa sáng lập — Nga, Ukraina, Byelorussia và Liên bang Ngoại Kavkaz — cùng nhau thông qua Hiệp ước và Tuyên ngôn thành lập Liên bang. Sự nhất trí lịch sử này hợp pháp hóa và củng cố khối liên minh, tạo nên một nhà nước liên bang đa quốc gia mới. Nội dung cốt lõi của đại hội là sự thống nhất chính trị dựa trên nguyên tắc bình đẳng và tự nguyện, nhằm đạt được mục tiêu chung là xây dựng xã hội chủ nghĩa và phòng thủ tập thể trước các mối đe dọa bên ngoài.", "image");
 
-            addArtPiece(roomOffsetX + 5, yPos, zFront, Math.PI, largeArtW, largeArtH, "Lực lượng Hồng quân trên mặt trận Nội chiến", "content_room2/Lenin,_Trotsky_and_Voroshilov_with_Delegates_of_the_10th_Congress_of-the_Russian_Communist_Party_(Bolsheviks).jpg",
+            addArtPiece(roomOffsetX + 5, yPos, zFront, Math.PI, largeArtW, largeArtH, "Lực lượng Hồng quân trên mặt trận Nội chiến", "content_room2/Lenin.jpg",
                 "Bức ảnh lịch sử này là một cái nhìn trực tiếp vào lực lượng Hồng quân (Quân đội Công Nông) giữa bối cảnh Nội chiến Nga khốc liệt. Giai đoạn 1918–1922 là cuộc chiến sống còn của chính quyền Bolshevik non trẻ chống lại sự phản kháng của Bạch vệ (các lực lượng bảo hoàng và chống Bolshevik), cùng với sự can thiệp quân sự từ các cường quốc nước ngoài. Hình ảnh này khắc họa nỗ lực phi thường và tinh thần kiên cường của lực lượng quân sự chủ chốt—lực lượng quyết định việc thiết lập và củng cố quyền lực trung ương trên toàn lãnh thổ Nga sau Cách mạng Tháng Mười. Chính sự chiến thắng của Hồng quân đã bảo vệ thành công chính quyền, đặt nền móng vững chắc cho việc chấm dứt Nội chiến và dẫn đến sự ra đời của Liên bang Xô viết vào năm 1922.", "image");
 
             // Tranh cạnh cửa phòng 2 (Tăng kích thước: 3.5 x 2.5)
