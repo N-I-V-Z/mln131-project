@@ -2,7 +2,7 @@ import React from "react";
 
 const Museum = () => {
   const handleStart = () => {
-    window.location.reload();
+    window.location.href = '/museum.html';
   };
 
   return (
