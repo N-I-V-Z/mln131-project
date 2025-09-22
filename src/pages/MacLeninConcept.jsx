@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Container, Typography, Box, Card, CardContent, Divider, Zoom } from '@mui/material';
+import { Container, Typography, Box, Card, CardContent, Divider, Zoom, LinearProgress, Fade } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 
 const sections = [
@@ -104,28 +104,30 @@ const sections = [
     icon: null,
     content: (
       <div className="space-y-6">
-        <div className="bg-cyan-50 border-l-4 border-cyan-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-cyan-700">Bản chất:</span> <span className="font-semibold">Giai cấp công nhân</span> (trên nền <span className="font-semibold">liên minh xã hội rộng rãi</span>), đồng thời mang <span className="font-semibold">tính nhân dân</span>, <span className="font-semibold">tính dân tộc</span>, <span className="font-semibold">tính thời đại</span>; hướng đích <span className="font-bold text-cyan-700">công bằng xã hội</span> và <span className="font-bold text-cyan-700">giải phóng con người</span>.
+        <div className="rounded-xl shadow-lg p-6 bg-gradient-to-r from-cyan-100 via-blue-50 to-cyan-50 border-l-8 border-cyan-400">
+          <span className="font-extrabold text-cyan-700 text-lg">Bản chất:</span>
+          <span className="font-semibold text-cyan-800"> Giai cấp công nhân</span> <span className="italic text-cyan-600">(trên nền liên minh xã hội rộng rãi)</span>, đồng thời mang <span className="font-semibold text-blue-700">tính nhân dân</span>, <span className="font-semibold text-green-700">tính dân tộc</span>, <span className="font-semibold text-purple-700">tính thời đại</span>; hướng đích <span className="font-bold text-cyan-700">công bằng xã hội</span> và <span className="font-bold text-cyan-700">giải phóng con người</span>.
         </div>
-        <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-orange-700">Chức năng:</span>
-          <ul className="list-disc ml-6 mt-2 space-y-1">
-            <li>
-              <span className="font-semibold">Đối nội:</span> Mang bản chất giai cấp công nhân, thấm nhuần tính nhân dân, tính dân tộc, tính thời đại. Mục tiêu chiến lược là <span className="font-bold">giải phóng con người</span>, thực hiện <span className="font-bold">công bằng xã hội</span>, phát triển toàn diện cá nhân trong cộng đồng được tổ chức và quản trị hiệu quả.
-              <div className="flex flex-col ml-6 mt-1 space-y-1">
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Tổ chức phát triển kinh tế – văn hoá</span></div>
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Bảo đảm an sinh, công bằng, bình đẳng</span></div>
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Hoàn thiện pháp luật và pháp chế</span></div>
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Đấu tranh phòng chống tội phạm, tham nhũng, lợi ích nhóm</span></div>
-              </div>
-            </li>
-            <li>
-              <span className="font-semibold">Đối ngoại:</span> Bảo vệ độc lập – chủ quyền; hợp tác quốc tế, hội nhập, đóng góp hoà bình – phát triển.
-            </li>
-          </ul>
+        <div className="rounded-xl shadow-lg p-6 bg-gradient-to-r from-orange-100 via-yellow-50 to-orange-50 border-l-8 border-orange-400">
+          <span className="font-extrabold text-orange-700 text-lg">Chức năng:</span>
+          <div className="mt-2">
+            <div className="mb-2">
+              <span className="font-semibold text-orange-700">Đối nội:</span> <span className="text-gray-800">Mang bản chất giai cấp công nhân, thấm nhuần tính nhân dân, tính dân tộc, tính thời đại. Mục tiêu chiến lược là <span className="font-bold">giải phóng con người</span>, thực hiện <span className="font-bold">công bằng xã hội</span>, phát triển toàn diện cá nhân trong cộng đồng được tổ chức và quản trị hiệu quả.</span>
+              <ul className="list-disc ml-8 mt-2 space-y-1">
+                <li className="text-orange-700">Tổ chức phát triển kinh tế – văn hoá</li>
+                <li className="text-orange-700">Bảo đảm an sinh, công bằng, bình đẳng</li>
+                <li className="text-orange-700">Hoàn thiện pháp luật và pháp chế</li>
+                <li className="text-orange-700">Đấu tranh phòng chống tội phạm, tham nhũng, lợi ích nhóm</li>
+              </ul>
+            </div>
+            <div>
+              <span className="font-semibold text-orange-700">Đối ngoại:</span> <span className="text-gray-800">Bảo vệ độc lập – chủ quyền; hợp tác quốc tế, hội nhập, đóng góp hoà bình – phát triển.</span>
+            </div>
+          </div>
         </div>
-        <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-gray-700">Cơ chế thực thi:</span> Phối hợp công cụ <span className="font-semibold">chính trị</span> – <span className="font-semibold">pháp luật</span> – <span className="font-semibold">kinh tế</span> – <span className="font-semibold">văn hoá</span> – <span className="font-semibold">giáo dục</span>, trong đó <span className="font-bold">pháp luật</span> giữ vai trò chuẩn tắc – bắt buộc, còn <span className="font-bold">dân chủ</span> là động lực – mục tiêu. Thực hiện dựa vào pháp luật nhà nước ban hành, là công cụ tổ chức – điều chỉnh; mọi chủ thể bình đẳng trước pháp luật, đồng thời nhà nước kiểm soát quyền lực bằng <span className="font-semibold">lập pháp</span> – <span className="font-semibold">hành pháp</span> – <span className="font-semibold">tư pháp</span> phân công, phối hợp, kiểm soát trong tổng thể thống nhất, mở rộng quyền con người/quyền công dân; <span className="italic">nhà nước của dân, do dân, vì dân</span>.
+        <div className="rounded-xl shadow-lg p-6 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-50 border-l-8 border-gray-400">
+          <span className="font-extrabold text-gray-700 text-lg">Cơ chế thực thi:</span>
+          <span className="text-gray-800"> Phối hợp công cụ <span className="font-semibold text-blue-700">chính trị</span> – <span className="font-semibold text-green-700">pháp luật</span> – <span className="font-semibold text-cyan-700">kinh tế</span> – <span className="font-semibold text-orange-700">văn hoá</span> – <span className="font-semibold text-purple-700">giáo dục</span>, trong đó <span className="font-bold text-green-700">pháp luật</span> giữ vai trò chuẩn tắc – bắt buộc, còn <span className="font-bold text-blue-700">dân chủ</span> là động lực – mục tiêu. Thực hiện dựa vào pháp luật nhà nước ban hành, là công cụ tổ chức – điều chỉnh; mọi chủ thể bình đẳng trước pháp luật, đồng thời nhà nước kiểm soát quyền lực bằng <span className="font-semibold text-blue-700">lập pháp</span> – <span className="font-semibold text-green-700">hành pháp</span> – <span className="font-semibold text-purple-700">tư pháp</span> phân công, phối hợp, kiểm soát trong tổng thể thống nhất, mở rộng quyền con người/quyền công dân; <span className="italic text-blue-700">nhà nước của dân, do dân, vì dân</span>.</span>
         </div>
       </div>
     )
@@ -226,152 +228,195 @@ const sections = [
   },
 ];
 
-const referenceContent = (
-  <div className="flex justify-center items-center mt-8 mb-4">
-    <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-blue-800 text-base font-medium shadow-sm">
-      <InfoIcon className="mr-2 text-blue-500" />
-      <span><strong>Reference:</strong> Giáo trình học phần Chủ nghĩa xã hội khoa học (K) Tr 67 -Tr144</span>
-    </div>
-  </div>
-);
+// Removed unused referenceContent
 
 const MacLeninConcept = () => {
   const [current, setCurrent] = useState(0);
   const total = sections.length;
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
-        <Typography
-          variant="h3"
-          fontWeight="bold"
-          color="primary"
-          gutterBottom
-          sx={{
-            letterSpacing: 2,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            maxHeight: '3.6em', // 2 lines for h3
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '2.8rem' },
-            lineHeight: 1.2,
-          }}
-        >
-          Nền tảng lý luận về Nhà nước xã hội chủ nghĩa và các đặc trưng cốt lõi
-        </Typography>
-        <Typography variant="subtitle1" color="text.secondary" sx={{ fontStyle: 'italic', mb: 2 }}>
-          Khái niệm, bản chất, chức năng, đặc trưng và quá trình phát triển tại Việt Nam
-        </Typography>
-      </Box>
-      <Box sx={{ position: 'relative', mb: 3 }}>
-        {/* Left Arrow with semi-transparent clickable background */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: -64,
-            height: '100%',
-            width: 56,
-            display: { xs: 'none', sm: 'flex' },
-            alignItems: 'center',
-            zIndex: 2,
-            cursor: current === 0 ? 'not-allowed' : 'pointer',
-            opacity: current === 0 ? 0.4 : 1,
-            transition: 'background 0.2s',
-          }}
-          onClick={() => {
-            if (current !== 0) setCurrent((prev) => Math.max(prev - 1, 0));
-          }}
-          aria-label="Quay lại"
-          role="button"
-        >
-          <Box
+    <Box
+      sx={{
+        minHeight: '100vh',
+        width: '100%',
+        background: '#fff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        py: { xs: 2, md: 6 },
+        px: { xs: 0, md: 0 },
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* ...existing code... */}
+      <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
+        <Box sx={{ mb: 4, textAlign: 'center' }}>
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            color="primary"
+            gutterBottom
             sx={{
-              height: '100%',
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)',
-              borderRadius: 3,
-              boxShadow: 2,
-              mx: 1,
-              transition: 'background 0.2s',
-              ':hover': {
-                background: current === 0
-                  ? 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)'
-                  : 'linear-gradient(135deg, rgba(99,102,241,0.28) 0%, rgba(139,92,246,0.28) 100%)',
-              },
+              letterSpacing: 2,
+              color: '#222',
+              fontSize: { xs: '2.4rem', sm: '3.2rem', md: '3.8rem' },
+              lineHeight: 1.12,
+              mb: 1,
+              fontFamily: 'Montserrat, serif',
             }}
           >
-            <ArrowBackIosNewIcon sx={{ fontSize: 40, color: current === 0 ? '#bbb' : '#1976d2' }} />
+            Nền tảng lý luận về Nhà nước xã hội chủ nghĩa
+          </Typography>
+          <Typography variant="h5" sx={{ fontStyle: 'italic', mb: 2, fontWeight: 500, fontFamily: 'Montserrat, serif', color: '#555' }}>
+            Khái niệm, bản chất, chức năng, đặc trưng và quá trình phát triển tại Việt Nam
+          </Typography>
+        </Box>
+        <Box sx={{ position: 'relative', mb: 3, minHeight: { xs: 420, md: 520 } }}>
+          {/* Left Arrow - floating, animated, glowing */}
+          <Fade in={current > 0} timeout={400}>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: -80,
+                transform: 'translateY(-50%)',
+                width: 70,
+                height: 70,
+                display: { xs: 'none', sm: 'flex' },
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 3,
+                cursor: current === 0 ? 'not-allowed' : 'pointer',
+                opacity: current === 0 ? 0.2 : 1,
+                transition: 'opacity 0.2s',
+                filter: 'drop-shadow(0 0 16px #6a4fcf)',
+                ':hover': {
+                  transform: current === 0 ? 'translateY(-50%)' : 'translateY(-50%) scale(1.13)',
+                },
+              }}
+              onClick={() => {
+                if (current !== 0) setCurrent((prev) => Math.max(prev - 1, 0));
+              }}
+              aria-label="Quay lại"
+              role="button"
+            >
+              <ArrowBackIosNewIcon sx={{ fontSize: 54, color: current === 0 ? '#bbb' : '#6a4fcf' }} />
+            </Box>
+          </Fade>
+          {/* Content Card with luxury glassmorphism and border gradient */}
+          <Zoom in={true} key={current}>
+            <Card
+              sx={{
+                boxShadow: '0 8px 32px 0 rgba(33,150,243,0.10)',
+                borderRadius: 6,
+                background: '#fff',
+                border: '1.5px solid #e3e3e3',
+                minHeight: { xs: 420, md: 520 },
+                px: { xs: 2, md: 5 },
+                py: { xs: 2, md: 5 },
+                transition: 'box-shadow 0.3s',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <CardContent sx={{ position: 'relative', zIndex: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Typography
+                    variant="h4"
+                    fontWeight="bold"
+                    color="secondary"
+                    sx={{
+                      color: '#1976d2',
+                      fontSize: { xs: '1.3rem', sm: '1.7rem', md: '2.1rem' },
+                      letterSpacing: 1,
+                      fontFamily: 'Montserrat, serif',
+                    }}
+                  >
+                    {sections[current].title}
+                  </Typography>
+                </Box>
+                <Divider sx={{ mb: 2, borderColor: '#90caf9' }} />
+                <Box sx={{ fontSize: { xs: '1.08rem', md: '1.18rem' }, lineHeight: 1.7, color: '#222', fontFamily: 'Montserrat, serif' }}>
+                  {sections[current].content}
+                </Box>
+              </CardContent>
+            </Card>
+          </Zoom>
+          {/* Right Arrow - floating, animated, glowing */}
+          <Fade in={current < total - 1} timeout={400}>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                right: -80,
+                transform: 'translateY(-50%)',
+                width: 70,
+                height: 70,
+                display: { xs: 'none', sm: 'flex' },
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 3,
+                cursor: current === total - 1 ? 'not-allowed' : 'pointer',
+                opacity: current === total - 1 ? 0.2 : 1,
+                transition: 'opacity 0.2s',
+                filter: 'drop-shadow(0 0 16px #6a4fcf)',
+                ':hover': {
+                  transform: current === total - 1 ? 'translateY(-50%)' : 'translateY(-50%) scale(1.13)',
+                },
+              }}
+              onClick={() => {
+                if (current !== total - 1) setCurrent((prev) => Math.min(prev + 1, total - 1));
+              }}
+              aria-label="Tiếp theo"
+              role="button"
+            >
+              <ArrowForwardIosIcon sx={{ fontSize: 54, color: current === total - 1 ? '#bbb' : '#6a4fcf' }} />
+            </Box>
+          </Fade>
+          {/* Progress bar indicator - luxury style */}
+          <Box sx={{ position: 'absolute', left: 0, right: 0, bottom: -18, px: 6 }}>
+            <LinearProgress
+              variant="determinate"
+              value={((current + 1) / total) * 100}
+              sx={{
+                height: 8,
+                borderRadius: 4,
+                background: '#f3f3f3',
+                '& .MuiLinearProgress-bar': {
+                  background: 'linear-gradient(90deg, #1976d2 0%, #8e24aa 100%)',
+                },
+              }}
+            />
+            <Box sx={{ textAlign: 'center', mt: 0.5, fontWeight: 500, color: '#1976d2', fontSize: '1rem' }}>
+              {`Phần ${current + 1} / ${total}`}
+            </Box>
           </Box>
         </Box>
-        {/* Content Card */}
-        <Zoom in={true} key={current}>
-          <Card sx={{ boxShadow: 6, borderRadius: 3, background: 'linear-gradient(135deg, #e3f2fd 0%, #fffde7 100%)' }}>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                <Typography variant="h5" fontWeight="bold" color="secondary">
-                  {sections[current].title}
-                </Typography>
-              </Box>
-              <Divider sx={{ mb: 2 }} />
-              <Box>
-                {sections[current].content}
-              </Box>
-            </CardContent>
-          </Card>
-        </Zoom>
-        {/* Right Arrow with semi-transparent clickable background */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: -64,
-            height: '100%',
-            width: 56,
-            display: { xs: 'none', sm: 'flex' },
-            alignItems: 'center',
-            zIndex: 2,
-            cursor: current === total - 1 ? 'not-allowed' : 'pointer',
-            opacity: current === total - 1 ? 0.4 : 1,
-            transition: 'background 0.2s',
-          }}
-          onClick={() => {
-            if (current !== total - 1) setCurrent((prev) => Math.min(prev + 1, total - 1));
-          }}
-          aria-label="Tiếp theo"
-          role="button"
-        >
+        {/* Reference section - clean card */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 8, mb: 4 }}>
           <Box
             sx={{
-              height: '100%',
-              width: '100%',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)',
-              borderRadius: 3,
-              boxShadow: 2,
-              mx: 1,
-              transition: 'background 0.2s',
-              ':hover': {
-                background: current === total - 1
-                  ? 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)'
-                  : 'linear-gradient(135deg, rgba(99,102,241,0.28) 0%, rgba(139,92,246,0.28) 100%)',
-              },
+              background: '#f7f7fa',
+              border: '1.5px solid #e3e3e3',
+              borderRadius: 5,
+              px: 5,
+              py: 3,
+              color: '#1976d2',
+              fontSize: '1.15rem',
+              fontWeight: 600,
+              boxShadow: '0 2px 12px rgba(33,150,243,0.08)',
+              fontFamily: 'Montserrat, serif',
             }}
           >
-            <ArrowForwardIosIcon sx={{ fontSize: 40, color: current === total - 1 ? '#bbb' : '#1976d2' }} />
+            <InfoIcon sx={{ mr: 2, color: '#1976d2', fontSize: 28 }} />
+            <span><strong>Tham khảo:</strong> Giáo trình học phần Chủ nghĩa xã hội khoa học (K) Tr 67 -Tr144</span>
           </Box>
         </Box>
-      </Box>
-      {/* Removed section progress indicator */}
-      {referenceContent}
-    </Container>
+      </Container>
+    </Box>
   );
 };
 
