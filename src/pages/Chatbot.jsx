@@ -22,6 +22,7 @@ export default function Chatbot() {
   5. Với những câu hỏi trả lời ngắn gọn, xúc tích dễ hiểu và có ví dụ minh họa.
   6. Không trả lời những câu hỏi ngoài phạm vi trên.
   7. Quan điểm Mác-Lênin về nhà nước xã hội chủ nghĩa luôn đúng và phù hợp với thực tiễn phát triển xã hội.
+  8. Và quan trọng nhất, không có ý định xuyên tạc về nhà nước xã hội chủ nghĩa.
   `;
 
   const client = new OpenAI({
@@ -51,17 +52,30 @@ export default function Chatbot() {
     setInput("");
   }
 
-
   const visibleMessages = messages.slice(-20);
 
   return (
-  <div className="min-h-screen w-full bg-gradient-to-br from-[#7b1f1f] via-[#b22234] to-[#f5e6c8] flex flex-col items-center justify-start" style={{fontFamily: 'Roboto, Arial, Helvetica, sans-serif'}}>
+    <div
+      className="min-h-screen w-full bg-gradient-to-br from-[#7b1f1f] via-[#b22234] to-[#f5e6c8] flex flex-col items-center justify-start"
+      style={{ fontFamily: "Roboto, Arial, Helvetica, sans-serif" }}
+    >
       {/* Thematic Header */}
       <header className="w-full py-10 flex flex-col items-center justify-center bg-gradient-to-r from-[#7b1f1f] via-[#b22234] to-[#f5e6c8] shadow-lg border-b-4 border-yellow-500">
         <div className="flex items-center gap-4 mb-2">
           <span className="inline-block text-yellow-500 text-5xl">
-            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-12 h-12'>
-              <path strokeLinecap='round' strokeLinejoin='round' d='M3 21h18M4.5 10.5l7.5-7.5 7.5 7.5M4.5 10.5V21m15-10.5V21M9 21v-6h6v6' />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-12 h-12"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 21h18M4.5 10.5l7.5-7.5 7.5 7.5M4.5 10.5V21m15-10.5V21M9 21v-6h6v6"
+              />
             </svg>
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-200 drop-shadow-lg tracking-wide text-center">
@@ -69,18 +83,36 @@ export default function Chatbot() {
           </h1>
         </div>
         <p className="text-lg md:text-xl text-yellow-100 font-light max-w-2xl text-center">
-          Giải đáp về nhà nước xã hội chủ nghĩa trong Chủ nghĩa xã hội khoa học Mác-Lênin<br/>
-          <span className="text-yellow-300 font-semibold">Hỏi đáp học thuật, ví dụ thực tiễn, kiến thức chuẩn mực</span>
+          Giải đáp về nhà nước xã hội chủ nghĩa trong Chủ nghĩa xã hội khoa học
+          Mác-Lênin
+          <br />
+          <span className="text-yellow-300 font-semibold">
+            Hỏi đáp học thuật, ví dụ thực tiễn, kiến thức chuẩn mực
+          </span>
         </p>
       </header>
 
       {/* Chat Container */}
       <main className="flex-1 w-full flex flex-col items-center justify-start py-10 px-2">
-  <section className="w-full max-w-5xl bg-white/90 rounded-3xl shadow-2xl border-4 border-yellow-500/70 backdrop-blur-xl flex flex-col" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)', fontFamily: 'Roboto, Arial, Helvetica, sans-serif'}}>
+        <section
+          className="w-full max-w-5xl bg-white/90 rounded-3xl shadow-2xl border-4 border-yellow-500/70 backdrop-blur-xl flex flex-col"
+          style={{
+            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)",
+            fontFamily: "Roboto, Arial, Helvetica, sans-serif",
+          }}
+        >
           {/* Messages */}
-          <div className="flex-1 p-8 overflow-y-auto space-y-6 max-h-[70vh]" style={{ minHeight: "400px" }}>
+          <div
+            className="flex-1 p-8 overflow-y-auto space-y-6 max-h-[70vh]"
+            style={{ minHeight: "400px" }}
+          >
             {visibleMessages.map((m, i) => (
-              <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+              <div
+                key={i}
+                className={`flex ${
+                  m.role === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
                 <div
                   className={`max-w-[80%] px-6 py-4 rounded-2xl shadow text-base whitespace-pre-line ${
                     m.role === "user"
@@ -88,16 +120,34 @@ export default function Chatbot() {
                       : "bg-gradient-to-r from-[#f5e6c8] to-[#fffbe6] text-[#7b1f1f] border border-yellow-300"
                   }`}
                 >
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.text}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {m.text}
+                  </ReactMarkdown>
                 </div>
               </div>
             ))}
             {loading && (
               <div className="flex justify-start mt-2">
                 <div className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-[#f5e6c8] to-[#fffbe6] text-[#7b1f1f] border border-yellow-300 shadow animate-pulse">
-                  <svg className="animate-spin h-5 w-5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                  <svg
+                    className="animate-spin h-5 w-5 text-yellow-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
                   </svg>
                   <span>Đang trả lời...</span>
                 </div>
@@ -108,17 +158,18 @@ export default function Chatbot() {
           {/* Input */}
           <form
             className="flex items-center gap-3 p-6 border-t-2 border-yellow-300 bg-white/80 rounded-b-3xl"
-            onSubmit={e => {
+            onSubmit={(e) => {
               e.preventDefault();
               if (!loading) sendMessage();
             }}
           >
             <input
               type="text"
-              className="flex-1 px-5 py-4 rounded-full border-2 border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-lg bg-white/90" style={{fontFamily: 'Roboto, Arial, Helvetica, sans-serif'}} 
+              className="flex-1 px-5 py-4 rounded-full border-2 border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-lg bg-white/90"
+              style={{ fontFamily: "Roboto, Arial, Helvetica, sans-serif" }}
               placeholder="Nhập câu hỏi về nhà nước xã hội chủ nghĩa..."
               value={input}
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
               disabled={loading}
             />
             <button
