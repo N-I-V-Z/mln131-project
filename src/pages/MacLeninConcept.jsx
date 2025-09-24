@@ -1,377 +1,1192 @@
-import { useState } from 'react';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Container, Typography, Box, Card, CardContent, Divider, Zoom } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
+import { useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  BookOpen,
+  Users,
+  Scale,
+  Building,
+  Shield,
+  Landmark,
+  Globe,
+  Lightbulb,
+  Info,
+} from "lucide-react";
+import Button from "../components/ui/Button";
+import Card from "../components/ui/Card";
 
 const sections = [
   {
+    id: 1,
     title: "I. Giới thiệu",
-    icon: null,
+    icon: BookOpen,
+    color: "blue",
     content: (
-      <div className="space-y-4">
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
-          <span className="font-semibold text-blue-700">“Nền tảng lý luận về Nhà nước xã hội chủ nghĩa và các đặc trưng cốt lõi”</span> là chủ đề làm rõ hệ thống tri thức về <span className="font-bold text-blue-600">Nhà nước xã hội chủ nghĩa</span> trong khung Mác-Lênin, nhận diện các đặc trưng cốt lõi và quỹ đạo vận dụng/phát triển ở Việt Nam.
+      <div className="space-y-6">
+        <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-400 p-6 rounded-2xl backdrop-blur-sm border border-blue-500/20">
+          <p className="text-lg leading-relaxed">
+            <span className="font-bold text-blue-700 text-xl">
+              "Nền tảng lý luận về Nhà nước xã hội chủ nghĩa và các đặc trưng
+              cốt lõi"
+            </span>{" "}
+            là chủ đề làm rõ hệ thống tri thức về{" "}
+            <span className="font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+              Nhà nước xã hội chủ nghĩa
+            </span>{" "}
+            trong khung Mác-Lênin, nhận diện các đặc trưng cốt lõi và quỹ đạo
+            vận dụng/phát triển ở Việt Nam.
+          </p>
         </div>
-        <div className="flex flex-col gap-2">
-          <div className="flex items-start">
-            <span className="text-blue-400 font-bold mr-2">•</span>
-            <span>
-              <span className="font-semibold">Tiếp cận theo logic lịch sử:</span> từ nguồn gốc nhà nước, qua thời kỳ quá độ, đến nhà nước kiểu mới.
-            </span>
+        <div className="grid gap-4">
+          <div className="flex items-start gap-4 p-4 bg-white/50 rounded-xl border border-blue-200/50 hover:shadow-lg transition-all duration-300">
+            <div className="w-2 h-2 bg-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+            <div>
+              <span className="font-bold text-gray-800">
+                Tiếp cận theo logic lịch sử:
+              </span>
+              <span className="text-gray-700 ml-2">
+                từ nguồn gốc nhà nước, qua thời kỳ quá độ, đến nhà nước kiểu
+                mới.
+              </span>
+            </div>
           </div>
-          <div className="flex items-start">
-            <span className="text-blue-400 font-bold mr-2">•</span>
-            <span>
-              <span className="font-semibold">Kết hợp phân tích khái niệm:</span> bản chất, chức năng, đặc trưng.
-            </span>
+          <div className="flex items-start gap-4 p-4 bg-white/50 rounded-xl border border-blue-200/50 hover:shadow-lg transition-all duration-300">
+            <div className="w-2 h-2 bg-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+            <div>
+              <span className="font-bold text-gray-800">
+                Kết hợp phân tích khái niệm:
+              </span>
+              <span className="text-gray-700 ml-2">
+                bản chất, chức năng, đặc trưng.
+              </span>
+            </div>
           </div>
-          <div className="flex items-start">
-            <span className="text-blue-400 font-bold mr-2">•</span>
-            <span>
-              Chủ đề giúp nhìn sâu sắc hơn về <span className="font-bold text-blue-600">biến đổi cơ cấu kinh tế-xã hội</span> và <span className="font-bold text-blue-600">công cụ tổ chức xã hội mới</span>.
-            </span>
+          <div className="flex items-start gap-4 p-4 bg-white/50 rounded-xl border border-blue-200/50 hover:shadow-lg transition-all duration-300">
+            <div className="w-2 h-2 bg-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+            <div>
+              Chủ đề giúp nhìn sâu sắc hơn về{" "}
+              <span className="font-bold text-blue-600">
+                biến đổi cơ cấu kinh tế-xã hội
+              </span>{" "}
+              và{" "}
+              <span className="font-bold text-blue-600">
+                công cụ tổ chức xã hội mới
+              </span>
+              .
+            </div>
           </div>
         </div>
-        <blockquote className="border-l-4 border-blue-300 pl-4 italic text-gray-700">
-          Nhấn mạnh hiện thực hoá các giá trị <span className="font-bold text-blue-600">dân chủ, công bằng, giải phóng con người</span> và vận dụng lịch sử-đương đại trong bối cảnh Việt Nam (Nhà nước pháp quyền xã hội chủ nghĩa, dân chủ xã hội chủ nghĩa, vai trò Đảng, cải cách nhà nước).
-        </blockquote>
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-300 p-6 rounded-2xl italic">
+          <p className="text-gray-700 leading-relaxed">
+            Nhấn mạnh hiện thực hoá các giá trị{" "}
+            <span className="font-bold text-blue-600">
+              dân chủ, công bằng, giải phóng con người
+            </span>{" "}
+            và vận dụng lịch sử-đương đại trong bối cảnh Việt Nam (Nhà nước pháp
+            quyền xã hội chủ nghĩa, dân chủ xã hội chủ nghĩa, vai trò Đảng, cải
+            cách nhà nước).
+          </p>
+        </div>
       </div>
-    )
+    ),
   },
   {
+    id: 2,
     title: "II. Khái niệm Nhà nước xã hội chủ nghĩa",
-    icon: null,
+    icon: Users,
+    color: "yellow",
     content: (
-      <div className="space-y-4">
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-          <span className="font-bold text-yellow-700">Nhà nước xã hội chủ nghĩa</span> là <span className="font-semibold text-yellow-600">nhà nước kiểu mới</span> nảy sinh trong thời kỳ quá độ từ <span className="font-bold">Chủ nghĩa tư bản</span> lên <span className="font-bold">Chủ nghĩa xã hội</span>, do <span className="font-bold text-yellow-700">giai cấp công nhân liên minh với các tầng lớp lao động</span> nắm giữ quyền lãnh đạo, nhằm thủ tiêu cơ sở thống trị cũ, xây dựng quan hệ sản xuất và thiết chế xã hội phù hợp với Chủ nghĩa xã hội.
+      <div className="space-y-6">
+        <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-l-4 border-yellow-400 p-6 rounded-2xl backdrop-blur-sm border border-yellow-500/20">
+          <p className="text-lg leading-relaxed">
+            <span className="font-bold text-yellow-700 text-xl">
+              Nhà nước xã hội chủ nghĩa
+            </span>{" "}
+            là{" "}
+            <span className="font-bold text-yellow-600 bg-yellow-50 px-2 py-1 rounded">
+              nhà nước kiểu mới
+            </span>{" "}
+            nảy sinh trong thời kỳ quá độ từ{" "}
+            <span className="font-bold">Chủ nghĩa tư bản</span> lên{" "}
+            <span className="font-bold">Chủ nghĩa xã hội</span>, do{" "}
+            <span className="font-bold text-yellow-700">
+              giai cấp công nhân liên minh với các tầng lớp lao động
+            </span>{" "}
+            nắm giữ quyền lãnh đạo, nhằm thủ tiêu cơ sở thống trị cũ, xây dựng
+            quan hệ sản xuất và thiết chế xã hội phù hợp với Chủ nghĩa xã hội.
+          </p>
         </div>
-        <div className="flex flex-col gap-2">
-          <div className="flex items-start">
-            <span className="text-yellow-400 font-bold mr-2">•</span>
-            <span>
-              <span className="font-semibold">Chính trị-giai cấp:</span> trấn áp các lực lượng chống phá, bảo vệ thành quả cách mạng.
-            </span>
+        <div className="grid gap-4">
+          <div className="flex items-start gap-4 p-5 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200/50 hover:shadow-lg transition-all duration-300">
+            <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+            <div>
+              <span className="font-bold text-gray-800">
+                Chính trị-giai cấp:
+              </span>
+              <span className="text-gray-700 ml-2">
+                trấn áp các lực lượng chống phá, bảo vệ thành quả cách mạng.
+              </span>
+            </div>
           </div>
-          <div className="flex items-start">
-            <span className="text-yellow-400 font-bold mr-2">•</span>
-            <span>
-              <span className="font-semibold">Xã hội-tổ chức:</span> tổ chức xây dựng đời sống mới, phát triển kinh tế-văn hoá-pháp luật.
-            </span>
+          <div className="flex items-start gap-4 p-5 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200/50 hover:shadow-lg transition-all duration-300">
+            <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+            <div>
+              <span className="font-bold text-gray-800">Xã hội-tổ chức:</span>
+              <span className="text-gray-700 ml-2">
+                tổ chức xây dựng đời sống mới, phát triển kinh tế-văn hoá-pháp
+                luật.
+              </span>
+            </div>
           </div>
-          <div className="flex items-start">
-            <span className="text-yellow-400 font-bold mr-2">•</span>
-            <span>
-              <span className="font-bold text-yellow-700">Dân chủ xã hội chủ nghĩa</span> là bản chất và phương thức vận hành nhà nước kiểu mới: mở rộng quyền lực nhân dân, nâng cao quyền con người/quyền công dân, song song với kỷ cương, pháp chế.
-            </span>
+          <div className="flex items-start gap-4 p-5 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl border border-yellow-200/50 hover:shadow-lg transition-all duration-300">
+            <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+            <div>
+              <span className="font-bold text-yellow-700">
+                Dân chủ xã hội chủ nghĩa
+              </span>{" "}
+              là bản chất và phương thức vận hành nhà nước kiểu mới: mở rộng
+              quyền lực nhân dân, nâng cao quyền con người/quyền công dân, song
+              song với kỷ cương, pháp chế.
+            </div>
           </div>
         </div>
-        <blockquote className="border-l-4 border-yellow-300 pl-4 italic text-gray-700">
-          Khi các đối kháng giai cấp mất đi, nhà nước với tư cách bộ máy cưỡng chế sẽ thu hẹp chức năng; đây là luận đề mang tính lịch sử và triển vọng của mô hình được phân tích thích hợp là lịch sử-logic, bắt đầu từ nguồn gốc nhà nước trong xã hội có giai cấp, qua đòi hỏi khách quan của thời kỳ quá độ, đến việc hình thành nhà nước kiểu mới. Đồng thời cần đặt nhà nước trong quan hệ biện chứng cơ sở-kiến trúc thượng tầng.
-        </blockquote>
-        <div className="bg-yellow-100 rounded p-3 text-sm text-gray-800">
-          <span className="font-semibold text-yellow-700">Biện chứng giữa cơ sở kinh tế và kiến trúc thượng tầng:</span> Sự phát triển của lực lượng sản xuất và những thay đổi trong quan hệ sản xuất đòi hỏi kiến trúc thượng tầng (nhà nước, pháp luật, hệ tư tưởng...) phải điều chỉnh phù hợp để thúc đẩy sự phát triển xã hội.
+        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-300 p-6 rounded-2xl">
+          <p className="text-gray-700 leading-relaxed italic">
+            Khi các đối kháng giai cấp mất đi, nhà nước với tư cách bộ máy cưỡng
+            chế sẽ thu hẹp chức năng; đây là luận đề mang tính lịch sử và triển
+            vọng của mô hình được phân tích thích hợp là lịch sử-logic, bắt đầu
+            từ nguồn gốc nhà nước trong xã hội có giai cấp, qua đòi hỏi khách
+            quan của thời kỳ quá độ, đến việc hình thành nhà nước kiểu mới.
+          </p>
+        </div>
+        <div className="bg-yellow-100/50 rounded-2xl p-4 border border-yellow-200">
+          <p className="text-sm text-gray-800">
+            <span className="font-bold text-yellow-700">
+              💡 Biện chứng cơ sở-kiến trúc thượng tầng:
+            </span>{" "}
+            Sự phát triển của lực lượng sản xuất và những thay đổi trong quan hệ
+            sản xuất đòi hỏi kiến trúc thượng tầng (nhà nước, pháp luật, hệ tư
+            tưởng...) phải điều chỉnh phù hợp để thúc đẩy sự phát triển xã hội.
+          </p>
         </div>
       </div>
-    )
+    ),
   },
   {
+    id: 3,
     title: "III. Cơ sở hình thành: yếu tố, thành phần, nền tảng",
-    icon: null,
+    icon: Building,
+    color: "purple",
     content: (
       <div className="space-y-6">
-        <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-purple-700">Cơ sở kinh tế:</span> Trong mô hình xã hội chủ nghĩa, <span className="font-semibold">sở hữu công cộng</span> (toàn dân hoặc tập thể) giữ vai trò chủ đạo đối với tư liệu sản xuất chủ yếu. Điều này được hiện thực hoá thông qua các hình thức tổ chức sản xuất phù hợp từng giai đoạn, cùng với <span className="font-semibold">cơ chế kế hoạch hoá</span> hoặc <span className="font-semibold">điều tiết vĩ mô</span> nhằm định hướng phát triển vì lợi ích chung. Việc kết hợp <span className="font-semibold">cơ chế thị trường</span> trong một số bối cảnh không phủ nhận vai trò chủ đạo của sở hữu công cộng, mà nhằm phát huy hiệu quả phân bổ nguồn lực trong khuôn khổ định hướng xã hội chủ nghĩa.
+        <div className="bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border-l-4 border-purple-400 p-6 rounded-2xl backdrop-blur-sm border border-purple-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+              <Building className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-purple-700 text-lg">
+              Cơ sở kinh tế
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Trong mô hình xã hội chủ nghĩa,{" "}
+            <span className="font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">
+              sở hữu công cộng
+            </span>{" "}
+            (toàn dân hoặc tập thể) giữ vai trò chủ đạo đối với tư liệu sản xuất
+            chủ yếu. Điều này được hiện thực hoá thông qua các hình thức tổ chức
+            sản xuất phù hợp từng giai đoạn, cùng với{" "}
+            <span className="font-bold text-purple-600">
+              cơ chế kế hoạch hoá
+            </span>{" "}
+            hoặc{" "}
+            <span className="font-bold text-purple-600">điều tiết vĩ mô</span>{" "}
+            nhằm định hướng phát triển vì lợi ích chung.
+          </p>
         </div>
-        <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-green-700">Cơ sở xã hội – giai cấp:</span> <span className="font-semibold">Liên minh công nhân – nông dân – trí thức</span> là nền tảng xã hội của quyền lực nhà nước kiểu mới. Trên nền tảng đó, nhà nước mang tính nhân dân và tính dân tộc sâu sắc, hướng tới việc mở rộng tham gia xã hội, nâng cao mức sống và năng lực của đa số.
+
+        <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-l-4 border-green-400 p-6 rounded-2xl backdrop-blur-sm border border-green-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+              <Users className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-green-700 text-lg">
+              Cơ sở xã hội – giai cấp
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            <span className="font-bold text-green-600 bg-green-50 px-2 py-1 rounded">
+              Liên minh công nhân – nông dân – trí thức
+            </span>{" "}
+            là nền tảng xã hội của quyền lực nhà nước kiểu mới. Trên nền tảng
+            đó, nhà nước mang tính nhân dân và tính dân tộc sâu sắc, hướng tới
+            việc mở rộng tham gia xã hội, nâng cao mức sống và năng lực của đa
+            số.
+          </p>
         </div>
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-red-700">Cơ sở chính trị:</span> <span className="font-semibold">Vai trò lãnh đạo của Đảng Cộng sản</span> bảo đảm định hướng xã hội chủ nghĩa cho toàn bộ hệ thống chính trị. Sự lãnh đạo này thể hiện ở khả năng hoạch định đường lối, xây dựng thể chế, tổ chức thực thi và kiểm tra, giám sát quá trình vận hành hệ thống quyền lực, thống nhất chiến lược phát triển phù hợp với thể chế nhà nước.
+
+        <div className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border-l-4 border-red-400 p-6 rounded-2xl backdrop-blur-sm border border-red-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+              <Shield className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-red-700 text-lg">
+              Cơ sở chính trị
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              Vai trò lãnh đạo của Đảng Cộng sản
+            </span>{" "}
+            bảo đảm định hướng xã hội chủ nghĩa cho toàn bộ hệ thống chính trị.
+            Sự lãnh đạo này thể hiện ở khả năng hoạch định đường lối, xây dựng
+            thể chế, tổ chức thực thi và kiểm tra, giám sát quá trình vận hành
+            hệ thống quyền lực.
+          </p>
         </div>
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-blue-700">Cơ sở pháp lý – thể chế:</span> <span className="font-semibold">Nhà nước pháp quyền xã hội chủ nghĩa</span> khẳng định vị trí tối thượng của Hiến pháp và pháp luật; quyền lực nhà nước là thống nhất nhưng có phân công, phối hợp, kiểm soát giữa các nhánh quyền lực; mọi chủ thể đều bình đẳng trước pháp luật. Pháp luật vừa là chuẩn tắc chi phối hành vi, vừa là công cụ tổ chức xã hội hướng tới công bằng và phát triển.
+
+        <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-l-4 border-blue-400 p-6 rounded-2xl backdrop-blur-sm border border-blue-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+              <Scale className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-blue-700 text-lg">
+              Cơ sở pháp lý – thể chế
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            <span className="font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+              Nhà nước pháp quyền xã hội chủ nghĩa
+            </span>{" "}
+            khẳng định vị trí tối thượng của Hiến pháp và pháp luật; quyền lực
+            nhà nước là thống nhất nhưng có phân công, phối hợp, kiểm soát giữa
+            các nhánh quyền lực; mọi chủ thể đều bình đẳng trước pháp luật.
+          </p>
         </div>
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-yellow-700">Nguyên tắc tổ chức và vận hành:</span> <span className="font-semibold">Tập trung dân chủ, trách nhiệm – kỷ luật, công khai – minh bạch, gắn bó mật thiết với nhân dân</span> (<span className="italic">“của dân, do dân, vì dân”</span>).
+
+        <div className="bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-l-4 border-yellow-400 p-6 rounded-2xl backdrop-blur-sm border border-yellow-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+              <Landmark className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-yellow-700 text-lg">
+              Nguyên tắc tổ chức và vận hành
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            <span className="font-bold text-yellow-600">
+              Tập trung dân chủ, trách nhiệm – kỷ luật, công khai – minh bạch,
+              gắn bó mật thiết với nhân dân
+            </span>{" "}
+            <span className="italic text-yellow-600">
+              {'("của dân, do dân, vì dân")'}
+            </span>
+            .
+          </p>
         </div>
       </div>
-    )
+    ),
   },
   {
+    id: 4,
     title: "IV. Bản chất và chức năng",
-    icon: null,
+    icon: Scale,
+    color: "cyan",
     content: (
       <div className="space-y-6">
-        <div className="bg-cyan-50 border-l-4 border-cyan-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-cyan-700">Bản chất:</span> <span className="font-semibold">Giai cấp công nhân</span> (trên nền <span className="font-semibold">liên minh xã hội rộng rãi</span>), đồng thời mang <span className="font-semibold">tính nhân dân</span>, <span className="font-semibold">tính dân tộc</span>, <span className="font-semibold">tính thời đại</span>; hướng đích <span className="font-bold text-cyan-700">công bằng xã hội</span> và <span className="font-bold text-cyan-700">giải phóng con người</span>.
+        <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border-l-4 border-cyan-400 p-6 rounded-2xl backdrop-blur-sm border border-cyan-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
+              <Scale className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-cyan-700 text-xl">Bản chất</span>
+          </div>
+          <p className="text-lg leading-relaxed text-gray-700">
+            <span className="font-bold text-cyan-600 bg-cyan-50 px-2 py-1 rounded">
+              Giai cấp công nhân
+            </span>{" "}
+            (trên nền{" "}
+            <span className="font-bold text-cyan-600">
+              liên minh xã hội rộng rãi
+            </span>
+            ), đồng thời mang{" "}
+            <span className="font-bold text-cyan-600">tính nhân dân</span>,{" "}
+            <span className="font-bold text-cyan-600">tính dân tộc</span>,{" "}
+            <span className="font-bold text-cyan-600">tính thời đại</span>;
+            hướng đích{" "}
+            <span className="font-bold text-cyan-700">công bằng xã hội</span> và{" "}
+            <span className="font-bold text-cyan-700">
+              giải phóng con người
+            </span>
+            .
+          </p>
         </div>
-        <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-orange-700">Chức năng:</span>
-          <ul className="list-disc ml-6 mt-2 space-y-1">
-            <li>
-              <span className="font-semibold">Đối nội:</span> Mang bản chất giai cấp công nhân, thấm nhuần tính nhân dân, tính dân tộc, tính thời đại. Mục tiêu chiến lược là <span className="font-bold">giải phóng con người</span>, thực hiện <span className="font-bold">công bằng xã hội</span>, phát triển toàn diện cá nhân trong cộng đồng được tổ chức và quản trị hiệu quả.
-              <div className="flex flex-col ml-6 mt-1 space-y-1">
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Tổ chức phát triển kinh tế – văn hoá</span></div>
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Bảo đảm an sinh, công bằng, bình đẳng</span></div>
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Hoàn thiện pháp luật và pháp chế</span></div>
-                <div className="flex items-start"><span className="text-orange-400 font-bold mr-2">-</span><span>Đấu tranh phòng chống tội phạm, tham nhũng, lợi ích nhóm</span></div>
+
+        <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 border-l-4 border-orange-400 p-6 rounded-2xl backdrop-blur-sm border border-orange-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+              <Shield className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-orange-700 text-xl">Chức năng</span>
+          </div>
+
+          <div className="space-y-4">
+            <div className="bg-white/50 p-4 rounded-xl border border-orange-200/50">
+              <h4 className="font-bold text-orange-700 mb-3 flex items-center gap-2">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                Đối nội
+              </h4>
+              <p className="text-gray-700 mb-3">
+                Mang bản chất giai cấp công nhân, thấm nhuần tính nhân dân, tính
+                dân tộc, tính thời đại. Mục tiêu chiến lược là{" "}
+                <span className="font-bold text-orange-600">
+                  giải phóng con người
+                </span>
+                , thực hiện{" "}
+                <span className="font-bold text-orange-600">
+                  công bằng xã hội
+                </span>
+                .
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex items-center gap-2 p-2 bg-orange-50 rounded-lg">
+                  <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                  <span className="text-sm text-gray-700">
+                    Tổ chức phát triển kinh tế – văn hoá
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 p-2 bg-orange-50 rounded-lg">
+                  <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                  <span className="text-sm text-gray-700">
+                    Bảo đảm an sinh, công bằng
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 p-2 bg-orange-50 rounded-lg">
+                  <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                  <span className="text-sm text-gray-700">
+                    Hoàn thiện pháp luật và pháp chế
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 p-2 bg-orange-50 rounded-lg">
+                  <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+                  <span className="text-sm text-gray-700">
+                    Chống tham nhũng, lợi ích nhóm
+                  </span>
+                </div>
               </div>
-            </li>
-            <li>
-              <span className="font-semibold">Đối ngoại:</span> Bảo vệ độc lập – chủ quyền; hợp tác quốc tế, hội nhập, đóng góp hoà bình – phát triển.
-            </li>
-          </ul>
+            </div>
+
+            <div className="bg-white/50 p-4 rounded-xl border border-orange-200/50">
+              <h4 className="font-bold text-orange-700 mb-2 flex items-center gap-2">
+                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                Đối ngoại
+              </h4>
+              <p className="text-gray-700">
+                Bảo vệ độc lập – chủ quyền; hợp tác quốc tế, hội nhập, đóng góp
+                hoà bình – phát triển.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="bg-gray-50 border-l-4 border-gray-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-gray-700">Cơ chế thực thi:</span> Phối hợp công cụ <span className="font-semibold">chính trị</span> – <span className="font-semibold">pháp luật</span> – <span className="font-semibold">kinh tế</span> – <span className="font-semibold">văn hoá</span> – <span className="font-semibold">giáo dục</span>, trong đó <span className="font-bold">pháp luật</span> giữ vai trò chuẩn tắc – bắt buộc, còn <span className="font-bold">dân chủ</span> là động lực – mục tiêu. Thực hiện dựa vào pháp luật nhà nước ban hành, là công cụ tổ chức – điều chỉnh; mọi chủ thể bình đẳng trước pháp luật, đồng thời nhà nước kiểm soát quyền lực bằng <span className="font-semibold">lập pháp</span> – <span className="font-semibold">hành pháp</span> – <span className="font-semibold">tư pháp</span> phân công, phối hợp, kiểm soát trong tổng thể thống nhất, mở rộng quyền con người/quyền công dân; <span className="italic">nhà nước của dân, do dân, vì dân</span>.
+
+        <div className="bg-gradient-to-r from-gray-100 to-gray-200 border-l-4 border-gray-400 p-6 rounded-2xl shadow-lg">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center">
+              <Lightbulb className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold text-gray-700 text-lg">
+              Cơ chế thực thi
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Phối hợp công cụ{" "}
+            <span className="font-bold text-gray-600">
+              chính trị – pháp luật – kinh tế – văn hoá – giáo dục
+            </span>
+            , trong đó{" "}
+            <span className="font-bold text-gray-700">pháp luật</span> giữ vai
+            trò chuẩn tắc – bắt buộc, còn{" "}
+            <span className="font-bold text-gray-700">dân chủ</span> là động lực
+            – mục tiêu.{" "}
+            <span className="italic text-gray-600">
+              "Nhà nước của dân, do dân, vì dân"
+            </span>
+            .
+          </p>
         </div>
       </div>
-    )
+    ),
   },
   {
+    id: 5,
     title: "V. Đặc trưng cốt lõi",
-    icon: null,
+    icon: Shield,
+    color: "pink",
     content: (
       <div className="space-y-4">
-        <div className="flex items-center bg-pink-50 border-l-4 border-pink-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-pink-700">Tính nhân dân và dân chủ xã hội chủ nghĩa:</span> Quyền lực thuộc về nhân dân; dân chủ vừa là giá trị, vừa là phương thức quản trị.</span>
-        </div>
-        <div className="flex items-center bg-blue-50 border-l-4 border-blue-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-blue-700">Tính pháp quyền xã hội chủ nghĩa:</span> Thượng tôn Hiến pháp, tổ chức quyền lực hợp lý (thống nhất nhưng có phân công, phối hợp, kiểm soát), bảo đảm quyền con người/quyền công dân.</span>
-        </div>
-        <div className="flex items-center bg-green-50 border-l-4 border-green-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-green-700">Tính giai cấp công nhân trong liên minh xã hội rộng:</span> Bảo đảm định hướng xã hội chủ nghĩa nhất quán.</span>
-        </div>
-        <div className="flex items-center bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-yellow-700">Nền tảng sở hữu công cộng chủ đạo:</span> Cùng với cơ chế kế hoạch/điều tiết; mở rộng công cụ kinh tế-pháp lý để hiện thực hoá mục tiêu xã hội.</span>
-        </div>
-        <div className="flex items-center bg-red-50 border-l-4 border-red-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-red-700">Vai trò lãnh đạo của Đảng Cộng sản:</span> Đối với Nhà nước và xã hội nhằm phát triển và mở rộng đời sống xã hội, nhân dân và hợp tác quốc tế được ưu tiên đẩy mạnh.</span>
-        </div>
-        <div className="flex items-center bg-purple-50 border-l-4 border-purple-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-purple-700">Nguyên tắc tổ chức của Đảng và Nhà nước:</span> Tập trung dân chủ, kỷ luật – trách nhiệm, công khai – minh bạch, gắn bó với nhân dân.</span>
-        </div>
-        <div className="flex items-center bg-gray-50 border-l-4 border-gray-400 p-4 rounded shadow-sm">
-          <span><span className="font-bold text-gray-700">Tính lịch sử – phát triển qua các thời kỳ tại Việt Nam:</span> Nhà nước kiểu mới sau 1945 có độ mở để hiện đại hoá thiết chế, thích ứng với bối cảnh, tiệm cận tàn lụi khi điều kiện lịch sử – xã hội cho phép nhằm ngày một hoàn thiện hệ thống pháp luật; chuẩn hoá quy trình lập pháp – hành pháp – tư pháp phục đời sống nhân dân và phát triển đất nước.</span>
+        <div className="grid gap-4">
+          <div className="bg-gradient-to-r from-pink-500/10 to-rose-500/10 border-l-4 border-pink-400 p-5 rounded-2xl backdrop-blur-sm border border-pink-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center">
+                <Users className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-pink-700 text-lg">
+                  Tính nhân dân và dân chủ xã hội chủ nghĩa
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Quyền lực thuộc về nhân dân; dân chủ vừa là giá trị, vừa là
+                  phương thức quản trị.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-400 p-5 rounded-2xl backdrop-blur-sm border border-blue-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <Scale className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-blue-700 text-lg">
+                  Tính pháp quyền xã hội chủ nghĩa
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Thượng tôn Hiến pháp, tổ chức quyền lực hợp lý, bảo đảm quyền
+                  con người/quyền công dân.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-l-4 border-green-400 p-5 rounded-2xl backdrop-blur-sm border border-green-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <Building className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-green-700 text-lg">
+                  Tính giai cấp công nhân trong liên minh xã hội rộng
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Bảo đảm định hướng xã hội chủ nghĩa nhất quán.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-l-4 border-yellow-400 p-5 rounded-2xl backdrop-blur-sm border border-yellow-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                <Landmark className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-yellow-700 text-lg">
+                  Nền tảng sở hữu công cộng chủ đạo
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Cùng với cơ chế kế hoạch/điều tiết; mở rộng công cụ kinh
+                  tế-pháp lý để hiện thực hoá mục tiêu xã hội.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border-l-4 border-red-400 p-5 rounded-2xl backdrop-blur-sm border border-red-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                <Shield className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-red-700 text-lg">
+                  Vai trò lãnh đạo của Đảng Cộng sản
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Đối với Nhà nước và xã hội nhằm phát triển và mở rộng đời sống
+                  xã hội, nhân dân và hợp tác quốc tế được ưu tiên đẩy mạnh.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-500/10 to-violet-500/10 border-l-4 border-purple-400 p-5 rounded-2xl backdrop-blur-sm border border-purple-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                <Lightbulb className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-purple-700 text-lg">
+                  Nguyên tắc tổ chức của Đảng và Nhà nước
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Tập trung dân chủ, kỷ luật – trách nhiệm, công khai – minh
+                  bạch, gắn bó với nhân dân.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-gray-500/10 to-slate-500/10 border-l-4 border-gray-400 p-5 rounded-2xl backdrop-blur-sm border border-gray-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center">
+                <Globe className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <span className="font-bold text-gray-700 text-lg">
+                  Tính lịch sử – phát triển qua các thời kỳ tại Việt Nam
+                </span>
+                <p className="text-gray-700 mt-1">
+                  Nhà nước kiểu mới sau 1945 có độ mở để hiện đại hoá thiết chế,
+                  thích ứng với bối cảnh, tiệm cận tàn lụi khi điều kiện lịch sử
+                  – xã hội cho phép.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    )
+    ),
   },
   {
-    title: "VI. Khái quát các giai đoạn của Nhà nước xã hội chủ nghĩa trong lịch sử hiện đại Việt Nam",
-    icon: null,
+    id: 6,
+    title:
+      "VI. Khái quát các giai đoạn của Nhà nước xã hội chủ nghĩa trong lịch sử hiện đại Việt Nam",
+    icon: Globe,
+    color: "indigo",
     content: (
-      <div className="space-y-4">
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-blue-700">Giai đoạn hình thành tiền đề (1945-1954):</span> Sự ra đời của <span className="font-bold text-red-600">Nhà nước Việt Nam Dân chủ Cộng hoà</span> mở nền móng cho nhà nước kiểu mới, đặt trọng tâm vào <span className="font-bold text-red-600">độc lập dân tộc</span> và quyền lực thuộc về nhân dân, từng bước xây dựng cơ sở pháp lý – thể chế trong bối cảnh chiến tranh bảo vệ nền độc lập.
+      <div className="space-y-6">
+        <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-400 p-6 rounded-2xl backdrop-blur-sm border border-blue-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+              1
+            </div>
+            <span className="font-bold text-blue-700 text-lg">
+              Giai đoạn hình thành tiền đề (1945-1954)
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Sự ra đời của{" "}
+            <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              Nhà nước Việt Nam Dân chủ Cộng hoà
+            </span>{" "}
+            mở nền móng cho nhà nước kiểu mới, đặt trọng tâm vào{" "}
+            <span className="font-bold text-red-600">độc lập dân tộc</span> và
+            quyền lực thuộc về nhân dân, từng bước xây dựng cơ sở pháp lý – thể
+            chế trong bối cảnh chiến tranh bảo vệ nền độc lập.
+          </p>
         </div>
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-yellow-700">Miền Bắc thời kỳ quá độ (1954-1975):</span> Ở miền Bắc, quá trình <span className="font-bold text-red-600">xây dựng chủ nghĩa xã hội</span> diễn ra song song với nhiệm vụ giải phóng miền Nam; mô hình công hữu, kế hoạch hoá và hệ thống phúc lợi – giáo dục – y tế được mở rộng; nhà nước củng cố bản chất giai cấp công nhân gắn với tính nhân dân và tính dân tộc.
+
+        <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-l-4 border-yellow-400 p-6 rounded-2xl backdrop-blur-sm border border-yellow-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold">
+              2
+            </div>
+            <span className="font-bold text-yellow-700 text-lg">
+              Miền Bắc thời kỳ quá độ (1954-1975)
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Ở miền Bắc, quá trình{" "}
+            <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              xây dựng chủ nghĩa xã hội
+            </span>{" "}
+            diễn ra song song với nhiệm vụ giải phóng miền Nam; mô hình công
+            hữu, kế hoạch hoá và hệ thống phúc lợi – giáo dục – y tế được mở
+            rộng; nhà nước củng cố bản chất giai cấp công nhân gắn với tính nhân
+            dân và tính dân tộc.
+          </p>
         </div>
-        <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-green-700">Sau thống nhất (1976-1986):</span> Sau thống nhất, <span className="font-bold text-red-600">mô hình kế hoạch hoá tập trung</span> được áp dụng toàn quốc; nhà nước tiếp tục phát huy vai trò tổ chức xã hội nhưng cũng khẳng định định hướng về những thách thức và hiệu quả phân bổ nguồn lực trong điều kiện mới của nền kinh tế.
+
+        <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-l-4 border-green-400 p-6 rounded-2xl backdrop-blur-sm border border-green-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+              3
+            </div>
+            <span className="font-bold text-green-700 text-lg">
+              Sau thống nhất (1976-1986)
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Sau thống nhất,{" "}
+            <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              mô hình kế hoạch hoá tập trung
+            </span>{" "}
+            được áp dụng toàn quốc; nhà nước tiếp tục phát huy vai trò tổ chức
+            xã hội nhưng cũng khẳng định định hướng về những thách thức và hiệu
+            quả phân bổ nguồn lực trong điều kiện mới của nền kinh tế.
+          </p>
         </div>
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-red-700">Đổi mới và hiện đại hoá nhà nước (1986-nay):</span> Sự chuyển đổi sang <span className="font-bold text-red-600">kinh tế thị trường định hướng xã hội chủ nghĩa</span> đòi hỏi quá trình hiện đại hoá nhà nước theo hướng <span className="font-bold text-red-600">pháp quyền xã hội chủ nghĩa</span>: hoàn thiện hệ thống pháp luật; bảo đảm thượng tôn Hiến pháp; thúc đẩy cải cách hành chính, cải cách tư pháp; tăng cường cơ chế kiểm soát quyền lực; phòng, chống tham nhũng; mở rộng các cơ chế dân chủ, tham gia, giám sát và phản biện xã hội. Nhà nước chủ động <span className="font-bold text-red-600">hội nhập quốc tế</span>, tiếp thu chuẩn mực quản trị hiện đại, đồng thời giữ vững <span className="font-bold text-red-600">định hướng xã hội chủ nghĩa</span> và lợi ích quốc gia – dân tộc theo phương châm <span className="font-bold text-red-600">“của dân, do dân, vì dân”</span> được cụ thể hoá vào quy trình lập pháp – hành pháp – tư pháp.
+
+        <div className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border-l-4 border-red-400 p-6 rounded-2xl backdrop-blur-sm border border-red-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-bold">
+              4
+            </div>
+            <span className="font-bold text-red-700 text-lg">
+              Đổi mới và hiện đại hoá nhà nước (1986-nay)
+            </span>
+          </div>
+          <div className="space-y-3">
+            <p className="text-gray-700 leading-relaxed">
+              Sự chuyển đổi sang{" "}
+              <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+                kinh tế thị trường định hướng xã hội chủ nghĩa
+              </span>{" "}
+              đòi hỏi quá trình hiện đại hoá nhà nước theo hướng{" "}
+              <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+                pháp quyền xã hội chủ nghĩa
+              </span>
+              :
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 p-3 bg-white/60 rounded-lg border border-red-200/50">
+                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                <span className="text-sm text-gray-700">
+                  Hoàn thiện hệ thống pháp luật
+                </span>
+              </div>
+              <div className="flex items-center gap-2 p-3 bg-white/60 rounded-lg border border-red-200/50">
+                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                <span className="text-sm text-gray-700">
+                  Cải cách hành chính, tư pháp
+                </span>
+              </div>
+              <div className="flex items-center gap-2 p-3 bg-white/60 rounded-lg border border-red-200/50">
+                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                <span className="text-sm text-gray-700">
+                  Kiểm soát quyền lực
+                </span>
+              </div>
+              <div className="flex items-center gap-2 p-3 bg-white/60 rounded-lg border border-red-200/50">
+                <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                <span className="text-sm text-gray-700">
+                  Mở rộng cơ chế dân chủ
+                </span>
+              </div>
+            </div>
+            <div className="bg-red-50 p-4 rounded-lg mt-4">
+              <p className="text-gray-700 text-sm italic">
+                Nhà nước chủ động{" "}
+                <span className="font-bold text-red-600">hội nhập quốc tế</span>
+                , tiếp thu chuẩn mực quản trị hiện đại, đồng thời giữ vững{" "}
+                <span className="font-bold text-red-600">
+                  định hướng xã hội chủ nghĩa
+                </span>{" "}
+                theo phương châm{" "}
+                <span className="font-bold text-red-600">
+                  "của dân, do dân, vì dân"
+                </span>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    )
+    ),
   },
   {
-    title: "VII. Dân chủ và pháp quyền xã hội chủ nghĩa trong bối cảnh hiện nay",
-    icon: null,
+    id: 7,
+    title:
+      "VII. Dân chủ và pháp quyền xã hội chủ nghĩa trong bối cảnh hiện nay",
+    icon: Landmark,
+    color: "emerald",
     content: (
-      <div className="space-y-4">
-        <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-green-700">Dân chủ xã hội chủ nghĩa</span> được cụ thể hoá qua việc tôn trọng, bảo vệ, bảo đảm <span className="font-bold text-red-600">quyền con người và quyền công dân</span>; cải tiến quy trình lập pháp – hành pháp – tư pháp theo hướng minh bạch, trách nhiệm giải trình; hoàn thiện cơ chế trưng cầu ý dân, tiếp công dân, phản biện xã hội.
+      <div className="space-y-6">
+        <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-l-4 border-green-400 p-6 rounded-2xl backdrop-blur-sm border border-green-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+              <Users className="w-5 h-5 text-white" />
+            </div>
+            <span className="font-bold text-green-700 text-xl">
+              Dân chủ xã hội chủ nghĩa
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            được cụ thể hoá qua việc tôn trọng, bảo vệ, bảo đảm{" "}
+            <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              quyền con người và quyền công dân
+            </span>
+            ; cải tiến quy trình lập pháp – hành pháp – tư pháp theo hướng minh
+            bạch, trách nhiệm giải trình; hoàn thiện cơ chế trưng cầu ý dân,
+            tiếp công dân, phản biện xã hội.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Scale className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-green-700">
+                  Minh bạch
+                </span>
+              </div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Users className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-green-700">
+                  Tham gia
+                </span>
+              </div>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Shield className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-green-700">
+                  Bảo vệ quyền
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-blue-700">Pháp quyền xã hội chủ nghĩa</span> nhấn mạnh <span className="font-bold text-red-600">tính tối thượng của Hiến pháp</span>, tính dự đoán được của pháp luật và tính khả thi trong tổ chức thi hành; tăng cường giám sát quyền lực bằng cả cơ chế nhà nước và cơ chế xã hội, bảo đảm rằng quyền lực được kiểm soát hữu hiệu trong khuôn khổ thống nhất.
+
+        <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-400 p-6 rounded-2xl backdrop-blur-sm border border-blue-500/20 shadow-lg">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+              <Scale className="w-5 h-5 text-white" />
+            </div>
+            <span className="font-bold text-blue-700 text-xl">
+              Pháp quyền xã hội chủ nghĩa
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            nhấn mạnh{" "}
+            <span className="font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+              tính tối thượng của Hiến pháp
+            </span>
+            , tính dự đoán được của pháp luật và tính khả thi trong tổ chức thi
+            hành; tăng cường giám sát quyền lực bằng cả cơ chế nhà nước và cơ
+            chế xã hội, bảo đảm rằng quyền lực được kiểm soát hữu hiệu trong
+            khuôn khổ thống nhất.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <BookOpen className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-blue-700">
+                  Thượng tôn Hiến pháp
+                </span>
+              </div>
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Landmark className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-blue-700">
+                  Dự đoán được
+                </span>
+              </div>
+            </div>
+            <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Shield className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-sm font-medium text-blue-700">
+                  Kiểm soát quyền lực
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    )
+    ),
   },
   {
+    id: 8,
     title: "VIII. Những thách thức đặt ra đối với Nhà nước hiện nay",
-    icon: null,
+    icon: Lightbulb,
+    color: "amber",
     content: (
       <div className="space-y-4">
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-yellow-700">Thứ nhất:</span> Tiếp tục <span className="font-bold">hoàn thiện thể chế</span> để cân bằng giữa hiệu quả quản trị và bảo đảm quyền làm chủ của nhân dân; tăng cường minh bạch, trách nhiệm giải trình, và chất lượng dịch vụ công.
+        <div className="bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-l-4 border-yellow-400 p-6 rounded-2xl backdrop-blur-sm border border-yellow-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              1
+            </div>
+            <span className="font-bold text-yellow-700 text-lg">
+              Hoàn thiện thể chế
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Tiếp tục{" "}
+            <span className="font-bold text-yellow-600">
+              hoàn thiện thể chế
+            </span>{" "}
+            để cân bằng giữa hiệu quả quản trị và bảo đảm quyền làm chủ của nhân
+            dân; tăng cường minh bạch, trách nhiệm giải trình, và chất lượng
+            dịch vụ công.
+          </p>
         </div>
-        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-blue-700">Thứ hai:</span> Đẩy mạnh <span className="font-bold">chuyển đổi số trong quản trị nhà nước</span> để nâng cao hiệu quả, giảm chi phí giao dịch, mở rộng sự tham gia của người dân.
+
+        <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-400 p-6 rounded-2xl backdrop-blur-sm border border-blue-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              2
+            </div>
+            <span className="font-bold text-blue-700 text-lg">
+              Chuyển đổi số
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Đẩy mạnh{" "}
+            <span className="font-bold text-blue-600">
+              chuyển đổi số trong quản trị nhà nước
+            </span>{" "}
+            để nâng cao hiệu quả, giảm chi phí giao dịch, mở rộng sự tham gia
+            của người dân.
+          </p>
         </div>
-        <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-green-700">Thứ ba:</span> <span className="font-bold">Củng cố kỷ luật – kỷ cương</span> đi liền với nhân văn – sáng tạo, tạo môi trường khuyến khích phát triển tài năng và đổi mới.
+
+        <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-l-4 border-green-400 p-6 rounded-2xl backdrop-blur-sm border border-green-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              3
+            </div>
+            <span className="font-bold text-green-700 text-lg">
+              Kỷ luật và sáng tạo
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            <span className="font-bold text-green-600">
+              Củng cố kỷ luật – kỷ cương
+            </span>{" "}
+            đi liền với nhân văn – sáng tạo, tạo môi trường khuyến khích phát
+            triển tài năng và đổi mới.
+          </p>
         </div>
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded shadow-sm">
-          <span className="font-bold text-red-700">Thứ tư:</span> Gắn <span className="font-bold">tăng trưởng kinh tế</span> với <span className="font-bold">công bằng xã hội</span> và <span className="font-bold">phát triển bền vững</span>, bảo đảm không ai bị bỏ lại phía sau trong quá trình hiện đại hoá.
+
+        <div className="bg-gradient-to-r from-red-500/10 to-pink-500/10 border-l-4 border-red-400 p-6 rounded-2xl backdrop-blur-sm border border-red-500/20 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              4
+            </div>
+            <span className="font-bold text-red-700 text-lg">
+              Phát triển bền vững
+            </span>
+          </div>
+          <p className="text-gray-700 leading-relaxed">
+            Gắn{" "}
+            <span className="font-bold text-red-600">tăng trưởng kinh tế</span>{" "}
+            với <span className="font-bold text-red-600">công bằng xã hội</span>{" "}
+            và{" "}
+            <span className="font-bold text-red-600">phát triển bền vững</span>,
+            bảo đảm không ai bị bỏ lại phía sau trong quá trình hiện đại hoá.
+          </p>
         </div>
       </div>
-    )
+    ),
   },
   {
+    id: 9,
     title: "IX. Kết luận",
-    icon: null,
+    icon: BookOpen,
+    color: "blue",
     content: (
-      <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded shadow-sm">
-        <span className="font-bold text-blue-700">Nhà nước xã hội chủ nghĩa</span>, xét về nền tảng lý luận, là hình thức tổ chức quyền lực nhằm hiện thực hoá những <span className="font-bold">giá trị dân chủ</span> và <span className="font-bold">công bằng</span> trên cơ sở phát triển của <span className="font-bold">lực lượng sản xuất</span> và những <span className="font-bold">điều chỉnh tiến bộ của quan hệ sản xuất</span>.<br />
-        Trong lịch sử hiện đại Việt Nam, mô hình này trải qua nhiều giai đoạn, với trọng tâm ngày càng rõ vào <span className="font-bold">xây dựng nhà nước pháp quyền xã hội chủ nghĩa</span> phù hợp với <span className="font-bold">kinh tế thị trường định hướng xã hội chủ nghĩa</span> và <span className="font-bold">hội nhập quốc tế</span>.<br />
-        <span className="font-bold">Tính lịch sử – phát triển</span> của mô hình đòi hỏi việc <span className="font-bold">hoàn thiện thể chế</span> một cách liên tục, sáng tạo và chuẩn mực, để vừa bảo đảm <span className="font-bold">định hướng xã hội chủ nghĩa</span>, vừa đáp ứng <span className="font-bold">yêu cầu phát triển của thời đại</span>.
+      <div className="space-y-6">
+        <div className="bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-purple-500/10 border-l-4 border-blue-400 p-8 rounded-2xl backdrop-blur-sm border border-blue-500/20 shadow-xl">
+          <div className="text-center mb-6">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BookOpen className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">Tổng kết</h3>
+          </div>
+
+          <div className="space-y-4">
+            <p className="text-lg leading-relaxed text-gray-700">
+              <span className="font-bold text-blue-700 text-xl">
+                Nhà nước xã hội chủ nghĩa
+              </span>
+              , xét về nền tảng lý luận, là hình thức tổ chức quyền lực nhằm
+              hiện thực hoá những{" "}
+              <span className="font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                giá trị dân chủ
+              </span>{" "}
+              và{" "}
+              <span className="font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                công bằng
+              </span>{" "}
+              trên cơ sở phát triển của{" "}
+              <span className="font-bold text-blue-600">
+                lực lượng sản xuất
+              </span>{" "}
+              và những{" "}
+              <span className="font-bold text-blue-600">
+                điều chỉnh tiến bộ của quan hệ sản xuất
+              </span>
+              .
+            </p>
+
+            <div className="bg-white/60 p-4 rounded-xl border border-blue-200/50">
+              <p className="text-gray-700 leading-relaxed">
+                Trong lịch sử hiện đại Việt Nam, mô hình này trải qua nhiều giai
+                đoạn, với trọng tâm ngày càng rõ vào{" "}
+                <span className="font-bold text-blue-600">
+                  xây dựng nhà nước pháp quyền xã hội chủ nghĩa
+                </span>{" "}
+                phù hợp với{" "}
+                <span className="font-bold text-blue-600">
+                  kinh tế thị trường định hướng xã hội chủ nghĩa
+                </span>{" "}
+                và{" "}
+                <span className="font-bold text-blue-600">
+                  hội nhập quốc tế
+                </span>
+                .
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-5 rounded-xl border border-blue-200">
+              <p className="text-gray-700 leading-relaxed">
+                <span className="font-bold text-purple-600">
+                  Tính lịch sử – phát triển
+                </span>{" "}
+                của mô hình đòi hỏi việc{" "}
+                <span className="font-bold text-purple-600">
+                  hoàn thiện thể chế
+                </span>{" "}
+                một cách liên tục, sáng tạo và chuẩn mực, để vừa bảo đảm{" "}
+                <span className="font-bold text-purple-600">
+                  định hướng xã hội chủ nghĩa
+                </span>
+                , vừa đáp ứng{" "}
+                <span className="font-bold text-purple-600">
+                  yêu cầu phát triển của thời đại
+                </span>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Key takeaways */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200 text-center">
+            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Users className="w-6 h-6 text-white" />
+            </div>
+            <h4 className="font-bold text-green-700 mb-2">Tính nhân dân</h4>
+            <p className="text-sm text-gray-600">Quyền lực thuộc về nhân dân</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl border border-blue-200 text-center">
+            <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Scale className="w-6 h-6 text-white" />
+            </div>
+            <h4 className="font-bold text-blue-700 mb-2">Pháp quyền</h4>
+            <p className="text-sm text-gray-600">
+              Thượng tôn Hiến pháp và pháp luật
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-50 to-violet-50 p-4 rounded-xl border border-purple-200 text-center">
+            <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Globe className="w-6 h-6 text-white" />
+            </div>
+            <h4 className="font-bold text-purple-700 mb-2">Phát triển</h4>
+            <p className="text-sm text-gray-600">Thích ứng với thời đại</p>
+          </div>
+        </div>
       </div>
-    )
+    ),
   },
 ];
-
-const referenceContent = (
-  <div className="flex justify-center items-center mt-8 mb-4">
-    <div className="flex items-center bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-blue-800 text-base font-medium shadow-sm">
-      <InfoIcon className="mr-2 text-blue-500" />
-      <span><strong>Reference:</strong> Giáo trình học phần Chủ nghĩa xã hội khoa học (K) Tr 67 -Tr144</span>
-    </div>
-  </div>
-);
 
 const MacLeninConcept = () => {
   const [current, setCurrent] = useState(0);
   const total = sections.length;
 
+  const handleNext = () => {
+    setCurrent((prev) => (prev + 1) % total);
+  };
+
+  const handlePrevious = () => {
+    setCurrent((prev) => (prev - 1 + total) % total);
+  };
+
+  const getColorClasses = (color) => {
+    const colors = {
+      blue: "from-blue-900 via-indigo-900 to-purple-900",
+      yellow: "from-yellow-900 via-orange-900 to-red-900",
+      purple: "from-purple-900 via-violet-900 to-indigo-900",
+      cyan: "from-cyan-900 via-blue-900 to-indigo-900",
+      pink: "from-pink-900 via-rose-900 to-red-900",
+      indigo: "from-indigo-900 via-purple-900 to-blue-900",
+      emerald: "from-emerald-900 via-green-900 to-teal-900",
+      amber: "from-amber-900 via-yellow-900 to-orange-900",
+    };
+    return colors[color] || colors.blue;
+  };
+
+  const section = sections[current];
+  const progress = ((current + 1) / total) * 100;
+  const IconComponent = section.icon;
+
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
-        <Typography
-          variant="h3"
-          fontWeight="bold"
-          color="primary"
-          gutterBottom
-          sx={{
-            letterSpacing: 2,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            maxHeight: '3.6em', // 2 lines for h3
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '2.8rem' },
-            lineHeight: 1.2,
-          }}
-        >
-          Nền tảng lý luận về Nhà nước xã hội chủ nghĩa và các đặc trưng cốt lõi
-        </Typography>
-        <Typography variant="subtitle1" color="text.secondary" sx={{ fontStyle: 'italic', mb: 2 }}>
-          Khái niệm, bản chất, chức năng, đặc trưng và quá trình phát triển tại Việt Nam
-        </Typography>
-      </Box>
-      <Box sx={{ position: 'relative', mb: 3 }}>
-        {/* Left Arrow with semi-transparent clickable background */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: -64,
-            height: '100%',
-            width: 56,
-            display: { xs: 'none', sm: 'flex' },
-            alignItems: 'center',
-            zIndex: 2,
-            cursor: current === 0 ? 'not-allowed' : 'pointer',
-            opacity: current === 0 ? 0.4 : 1,
-            transition: 'background 0.2s',
-          }}
-          onClick={() => {
-            if (current !== 0) setCurrent((prev) => Math.max(prev - 1, 0));
-          }}
-          aria-label="Quay lại"
-          role="button"
-        >
-          <Box
-            sx={{
-              height: '100%',
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)',
-              borderRadius: 3,
-              boxShadow: 2,
-              mx: 1,
-              transition: 'background 0.2s',
-              ':hover': {
-                background: current === 0
-                  ? 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)'
-                  : 'linear-gradient(135deg, rgba(99,102,241,0.28) 0%, rgba(139,92,246,0.28) 100%)',
-              },
-            }}
-          >
-            <ArrowBackIosNewIcon sx={{ fontSize: 40, color: current === 0 ? '#bbb' : '#1976d2' }} />
-          </Box>
-        </Box>
-        {/* Content Card */}
-        <Zoom in={true} key={current}>
-          <Card sx={{ boxShadow: 6, borderRadius: 3, background: 'linear-gradient(135deg, #e3f2fd 0%, #fffde7 100%)' }}>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                <Typography variant="h5" fontWeight="bold" color="secondary">
-                  {sections[current].title}
-                </Typography>
-              </Box>
-              <Divider sx={{ mb: 2 }} />
-              <Box>
-                {sections[current].content}
-              </Box>
-            </CardContent>
-          </Card>
-        </Zoom>
-        {/* Right Arrow with semi-transparent clickable background */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: -64,
-            height: '100%',
-            width: 56,
-            display: { xs: 'none', sm: 'flex' },
-            alignItems: 'center',
-            zIndex: 2,
-            cursor: current === total - 1 ? 'not-allowed' : 'pointer',
-            opacity: current === total - 1 ? 0.4 : 1,
-            transition: 'background 0.2s',
-          }}
-          onClick={() => {
-            if (current !== total - 1) setCurrent((prev) => Math.min(prev + 1, total - 1));
-          }}
-          aria-label="Tiếp theo"
-          role="button"
-        >
-          <Box
-            sx={{
-              height: '100%',
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)',
-              borderRadius: 3,
-              boxShadow: 2,
-              mx: 1,
-              transition: 'background 0.2s',
-              ':hover': {
-                background: current === total - 1
-                  ? 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.18) 100%)'
-                  : 'linear-gradient(135deg, rgba(99,102,241,0.28) 0%, rgba(139,92,246,0.28) 100%)',
-              },
-            }}
-          >
-            <ArrowForwardIosIcon sx={{ fontSize: 40, color: current === total - 1 ? '#bbb' : '#1976d2' }} />
-          </Box>
-        </Box>
-      </Box>
-      {/* Removed section progress indicator */}
-      {referenceContent}
-    </Container>
+    <div
+      className={`min-h-screen bg-gradient-to-br ${getColorClasses(
+        section.color
+      )} py-8 transition-all duration-700`}
+    >
+      <div className="container max-w-6xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-white/20 to-white/10 rounded-3xl mb-6 shadow-2xl backdrop-blur-sm border border-white/20">
+            <IconComponent className="h-10 w-10 text-white" />
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Nền tảng lý luận về Nhà nước xã hội chủ nghĩa
+          </h1>
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed">
+            Khái niệm, bản chất, chức năng, đặc trưng và quá trình phát triển
+            tại Việt Nam
+          </p>
+        </div>
+
+        {/* Progress and Navigation */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <Button
+              onClick={handlePrevious}
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3 backdrop-blur-sm"
+              variant="outline"
+            >
+              <ChevronLeft className="h-5 w-5" />
+              <span className="hidden sm:inline">Trước</span>
+            </Button>
+
+            <div className="text-center">
+              <div className="text-white/80 text-sm mb-1">
+                Phần {current + 1} / {total}
+              </div>
+              <div className="w-64 bg-white/20 rounded-full h-2">
+                <div
+                  className="bg-gradient-to-r from-white/80 to-white/60 h-2 rounded-full transition-all duration-500"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <Button
+              onClick={handleNext}
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-3 backdrop-blur-sm"
+              variant="outline"
+            >
+              <span className="hidden sm:inline">Tiếp</span>
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Main Content Card */}
+        <Card className="bg-white/95 backdrop-blur-lg border-white/20 shadow-2xl rounded-3xl overflow-hidden transition-all duration-500 transform">
+          <div className="p-8 md:p-12">
+            <div className="flex items-center gap-4 mb-8">
+              <div
+                className={`w-12 h-12 bg-gradient-to-r ${
+                  section.color === "blue"
+                    ? "from-blue-500 to-indigo-600"
+                    : section.color === "yellow"
+                    ? "from-yellow-500 to-orange-600"
+                    : section.color === "purple"
+                    ? "from-purple-500 to-violet-600"
+                    : section.color === "cyan"
+                    ? "from-cyan-500 to-blue-600"
+                    : section.color === "pink"
+                    ? "from-pink-500 to-rose-600"
+                    : section.color === "indigo"
+                    ? "from-indigo-500 to-purple-600"
+                    : section.color === "emerald"
+                    ? "from-emerald-500 to-green-600"
+                    : section.color === "amber"
+                    ? "from-amber-500 to-yellow-600"
+                    : "from-blue-500 to-indigo-600"
+                } rounded-2xl flex items-center justify-center shadow-lg`}
+              >
+                <IconComponent className="h-6 w-6 text-white" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
+                {section.title}
+              </h2>
+            </div>
+
+            <div className="prose prose-lg max-w-none">{section.content}</div>
+          </div>
+        </Card>
+
+        {/* Section Navigation Dots */}
+        <div className="flex justify-center mt-8 space-x-2">
+          {sections.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === current
+                  ? "bg-white shadow-lg scale-125"
+                  : "bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Reference */}
+        <div className="mt-12 flex justify-center">
+          <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 shadow-lg">
+            <Info className="h-5 w-5 text-white/80 flex-shrink-0" />
+            <span className="text-white/90 font-medium text-sm md:text-base">
+              <strong>Tài liệu tham khảo:</strong> Giáo trình học phần Chủ nghĩa
+              xã hội khoa học (K) Tr 67 - Tr 144
+            </span>
+          </div>
+        </div>
+
+        {/* Quick Navigation Menu */}
+        <div className="mt-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-lg">
+          <h3 className="text-white font-bold text-lg mb-4 text-center">
+            Mục lục nhanh
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {sections.map((sec, index) => (
+              <button
+                key={sec.id}
+                onClick={() => setCurrent(index)}
+                className={`text-left p-3 rounded-lg transition-all duration-200 ${
+                  index === current
+                    ? "bg-white/20 text-white shadow-lg"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                      index === current ? "bg-white/30" : "bg-white/10"
+                    }`}
+                  >
+                    <sec.icon className="h-4 w-4" />
+                  </div>
+                  <span className="text-sm font-medium line-clamp-2">
+                    {sec.title}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
