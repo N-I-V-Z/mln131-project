@@ -340,25 +340,28 @@
             //ceiling.rotation.x = Math.PI / 2;
             //scene.add(ceiling);
 
-            // Texture bầu trời
+            // ====== TRẦN BẦU TRỜI ======
+
+            // Load texture bầu trời
             const skyTex = new THREE.TextureLoader().load("sku.jpg");
             skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
-            skyTex.repeat.set(1, 1); // chỉnh số lần lặp
+            skyTex.repeat.set(1, 1); // Không lặp
             skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
             skyTex.minFilter = THREE.LinearFilter;
 
-            // Tạo material cho trần bầu trời
+            // Material cho trần bầu trời
             const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
                 map: skyTex, 
                 side: THREE.DoubleSide 
             });
-            
+
+            // Tạo mesh trần bầu trời (bao trùm cả phòng)
             const ceilingSky = new THREE.Mesh(
-                new THREE.PlaneGeometry(roomW * 2, roomD), // dài gấp đôi chiều rộng phòng
+                new THREE.PlaneGeometry(roomW, roomD), // vừa khít phòng
                 ceilingSkyMat
             );
-            ceilingSky.rotation.x = Math.PI / 2;
-            ceilingSky.position.set(roomW / 2, roomH, 0); // dịch ra giữa 2 phòng
+            ceilingSky.rotation.x = Math.PI / 2;   // quay nằm ngang
+            ceilingSky.position.set(0, roomH, 0); // đặt đúng cao độ trần
             scene.add(ceilingSky);
             
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
