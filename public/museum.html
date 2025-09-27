@@ -266,11 +266,11 @@
 
             // 1. Tải Texture Tường (Texture Xi Măng Đánh Bóng)
             // SỬ DỤNG FILE museum_wall_texture.jpg (giả định đã nằm cùng thư mục)
-            //const wallTex = new THREE.TextureLoader().load("TBT_CG_0011_BROWN_02_DIFFUSE.jpg");
-            //wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
-            //wallTex.repeat.set(4, 2); // Lặp lại 4 lần ngang (X) và 2 lần dọc (Y/H)
-            //wallTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            //wallTex.minFilter = THREE.LinearFilter;
+            const wallTex = new THREE.TextureLoader().load("TBT_CG_0011_BROWN_02_DIFFUSE.jpg");
+            wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
+            wallTex.repeat.set(1, 1); // Lặp lại 4 lần ngang (X) và 2 lần dọc (Y/H)
+            wallTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            wallTex.minFilter = THREE.LinearFilter;
 
             // Mã màu: Vàng nhạt, ấm (Warm Pale Yellow), gợi nhớ màu tường nhà cổ: 0xFBE7C6
             //const lightYellowColor = 0xFBE7C6; 
@@ -286,20 +286,21 @@
 
 
             // **THIẾT KẾ VẬT LIỆU MỚI CHO BẢO TÀNG**
-
+            const museumWallMat = new THREE.MeshLambertMaterial({ map: wallTex });
+            const darkerWallMat = new THREE.MeshLambertMaterial({ map: wallTex, color: 0xAAAAAA }); 
             // Mã màu: Vàng nhạt, ấm (Warm Pale Yellow), gợi nhớ màu tường nhà cổ: 0xFBE7C6
             const lightYellowColor = 0xCDB38B;
             // Mã màu: Vàng nhạt tối hơn một chút cho tường cửa: 0xE0D0B0
             const darkerYellowColor = 0xCDB38B;
 
             // Vật liệu Tường Chính (CHỈ DÙNG MÀU ĐƠN SẮC VÀNG NHẠT)
-            const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
+            //const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
 
             // Vật liệu Trần (Màu trắng NHẠT do bạn yêu cầu: 0xCFCFCF)
             const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
 
             // Vật liệu Tường trước/sau cửa (Màu Vàng Nhạt Tối Hơn)
-            const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
+            //const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
 
 
             // ==== TƯỜNG PHÒNG 1 (DÙNG VẬT LIỆU MỚI) ====
