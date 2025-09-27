@@ -340,7 +340,7 @@
             //ceiling.rotation.x = Math.PI / 2;
             //scene.add(ceiling);
 
-            // Hàm tạo trần bầu trời cho 1 phòng
+            // Hàm tạo trần bầu trời cho 1 phòng (CẬP NHẬT: TỐI ƯU HÓA)
             function addCeilingSky(centerX, centerZ) {
                 const skyTex = new THREE.TextureLoader().load("sku.jpg");
                 skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
@@ -360,13 +360,15 @@
                 ceilingSky.rotation.x = Math.PI / 2;
                 ceilingSky.position.set(centerX, roomH, centerZ); 
                 scene.add(ceilingSky);
+    
+                return ceilingSky; // Trả về đối tượng để quản lý nếu cần
             }
 
-// Thêm trần cho phòng 1 (ở gốc toạ độ)
-addCeilingSky(0, 0);
+            // Thêm trần cho phòng 1 (ở gốc toạ độ)
+            addCeilingSky(0, 0);
 
-// Thêm trần cho phòng 2 (nếu nó nằm bên phải phòng 1)
-addCeilingSky(roomW, 0);
+            // Thêm trần cho phòng 2 (nếu nó nằm bên phải phòng 1)
+            addCeilingSky(roomW, 0);
 
 // Nếu phòng 2 nằm phía sau phòng 1 thì dùng:
 // addCeilingSky(0, roomD);
@@ -495,10 +497,10 @@ addCeilingSky(roomW, 0);
             room2Group.add(floor2);
 
             // Trần
-            const ceiling2 = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
-            ceiling2.position.set(room2OffsetX, roomH, 0);
-            ceiling2.rotation.x = Math.PI / 2;
-            room2Group.add(ceiling2);
+            //const ceiling2 = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
+            //ceiling2.position.set(room2OffsetX, roomH, 0);
+            //ceiling2.rotation.x = Math.PI / 2;
+            //room2Group.add(ceiling2);
 
             scene.add(room2Group);
 
