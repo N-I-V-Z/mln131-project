@@ -340,22 +340,18 @@
             //scene.add(ceiling);
 
             // Load texture bầu trời
-            const skyTexture = new THREE.TextureLoader().load("sku.jpg");
-            skyTexture.wrapS = THREE.RepeatWrapping;
-            skyTexture.wrapT = THREE.RepeatWrapping;
-            skyTexture.repeat.set(2, 2); // có thể chỉnh tỉ lệ lặp
+            // TRẦN (texture bầu trời)
+            const skyTex = new THREE.TextureLoader().load("sku.jpg");
+            skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
+            skyTex.repeat.set(2, 2); // có thể chỉnh lặp lại
+            skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            skyTex.minFilter = THREE.LinearFilter;
 
-            // Ceiling (trần nhà) với texture
-            const ceilingGeometry = new THREE.PlaneGeometry(roomSize, roomSize);
-            const ceilingMaterial = new THREE.MeshStandardMaterial({ 
-            map: skyTexture,
-            side: THREE.BackSide // để nhìn từ dưới lên thấy texture
-            });
-            const ceiling = new THREE.Mesh(ceilingGeometry, ceilingMaterial);
-            ceiling.rotation.x = Math.PI / 2;
-            ceiling.position.y = roomHeight;
+            const ceilingMat = new THREE.MeshStandardMaterial({ map: skyTex, side: THREE.DoubleSide });
+            const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
+            ceiling.rotation.x = Math.PI / 2;   // xoay ngược so với sàn
+            ceiling.position.y = roomH;         // đặt lên trên cao
             scene.add(ceiling);
-
 
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
             createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
