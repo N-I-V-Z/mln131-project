@@ -334,11 +334,29 @@
             floor.rotation.x = -Math.PI / 2;
             scene.add(floor);
 
-            const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
-            ceiling.position.y = roomH;
-            ceiling.rotation.x = Math.PI / 2;
-            scene.add(ceiling);
+            //const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
+            //ceiling.position.y = roomH;
+            //ceiling.rotation.x = Math.PI / 2;
+            //scene.add(ceiling);
 
+            // Texture bầu trời
+            const skyTex = new THREE.TextureLoader().load("sku.jpg");
+            skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
+            skyTex.repeat.set(1, 1); // chỉnh số lần lặp
+            skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            skyTex.minFilter = THREE.LinearFilter;
+
+            // Đổi tên biến để không bị trùng
+            const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
+                map: skyTex, 
+                side: THREE.DoubleSide 
+            });
+
+            const ceilingSky = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingSkyMat);
+            ceilingSky.rotation.x = Math.PI / 2;   // xoay ngược so với sàn
+            ceilingSky.position.y = roomH;         // đặt lên trên cao
+            scene.add(ceilingSky);
+            
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
             createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
 
