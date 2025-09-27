@@ -1037,20 +1037,22 @@ const MacLeninConcept = () => {
 
   return (
     <div
-      className={`min-h-screen bg-gradient-to-br ${getColorClasses(
-        section.color
-      )} py-8 transition-all duration-700`}
+      className={`min-h-screen bg-gradient-to-br from-red-900 via-red-800 to-yellow-800 py-8 transition-all duration-700`}
     >
       <div className="container max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-white/20 to-white/10 rounded-3xl mb-6 shadow-2xl backdrop-blur-sm border border-white/20">
-            <IconComponent className="h-10 w-10 text-white" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl mb-6 shadow-2xl backdrop-blur-sm border border-white/20">
+            <IconComponent className="h-10 w-10 text-red-800" />
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+          <h1
+            className="text-3xl md:text-5xl font-bold mb-4 leading-tight 
+               bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 
+               bg-clip-text text-transparent"
+          >
             Nền tảng lý luận về Nhà nước xã hội chủ nghĩa
           </h1>
-          <p className="text-lg text-gray-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-red-100/80 max-w-3xl mx-auto leading-relaxed">
             Khái niệm, bản chất, chức năng, đặc trưng và quá trình phát triển
             tại Việt Nam
           </p>

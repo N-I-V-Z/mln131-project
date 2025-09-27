@@ -421,18 +421,19 @@ const Quiz = () => {
   // Mode Selection Screen
   if (!mode) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-violet-900 via-blue-900 to-indigo-900 py-16">
+      <div className="min-h-screen bg-gradient-to-br from-red-900 via-red-800 to-yellow-800 py-16">
         <div className="container max-w-6xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl mb-6 shadow-2xl">
-              <Brain className="h-10 w-10 text-white" />
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl mb-6 shadow-2xl border-4 border-red-500/30">
+              <Brain className="h-10 w-10 text-red-800" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 bg-clip-text text-transparent mb-6">
               Quiz Ôn Tập
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Kiểm tra và nâng cao kiến thức của bạn với các câu hỏi
+            <p className="text-xl text-red-100/80 max-w-2xl mx-auto leading-relaxed">
+              Kiểm tra và nâng cao kiến thức về Chủ nghĩa xã hội khoa học
+              Mác-Lênin
             </p>
           </div>
 
@@ -543,7 +544,7 @@ const Quiz = () => {
     const total = testQuestions.length;
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-violet-900 via-blue-900 to-indigo-900 py-8">
+      <div className="min-h-screen bg-gradient-to-br from-red-900 via-red-800 to-yellow-800 py-8">
         <div className="container max-w-4xl mx-auto px-4">
           <Card className="p-8 text-center bg-white/10 backdrop-blur-lg border-white/20">
             <div className="mb-8">
