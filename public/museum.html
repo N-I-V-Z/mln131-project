@@ -266,11 +266,11 @@
 
             // 1. Tải Texture Tường (Texture Xi Măng Đánh Bóng)
             // SỬ DỤNG FILE museum_wall_texture.jpg (giả định đã nằm cùng thư mục)
-            //const wallTex = new THREE.TextureLoader().load("TBT_CG_0011_BROWN_02_DIFFUSE.jpg");
-            //wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
-            //wallTex.repeat.set(4, 2); // Lặp lại 4 lần ngang (X) và 2 lần dọc (Y/H)
-            //wallTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            //wallTex.minFilter = THREE.LinearFilter;
+            const wallTex = new THREE.TextureLoader().load("TBT_CG_0101_1_DIFFUSE.jpg");
+            wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
+            wallTex.repeat.set(1, 1); // Lặp lại 4 lần ngang (X) và 2 lần dọc (Y/H)
+            wallTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            wallTex.minFilter = THREE.LinearFilter;
 
             // Mã màu: Vàng nhạt, ấm (Warm Pale Yellow), gợi nhớ màu tường nhà cổ: 0xFBE7C6
             //const lightYellowColor = 0xFBE7C6; 
@@ -286,20 +286,21 @@
 
 
             // **THIẾT KẾ VẬT LIỆU MỚI CHO BẢO TÀNG**
-
+            const museumWallMat = new THREE.MeshLambertMaterial({ map: wallTex });
+            const darkerWallMat = new THREE.MeshLambertMaterial({ map: wallTex, color: 0xAAAAAA }); 
             // Mã màu: Vàng nhạt, ấm (Warm Pale Yellow), gợi nhớ màu tường nhà cổ: 0xFBE7C6
             const lightYellowColor = 0xCDB38B;
             // Mã màu: Vàng nhạt tối hơn một chút cho tường cửa: 0xE0D0B0
             const darkerYellowColor = 0xCDB38B;
 
             // Vật liệu Tường Chính (CHỈ DÙNG MÀU ĐƠN SẮC VÀNG NHẠT)
-            const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
+            //const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
 
             // Vật liệu Trần (Màu trắng NHẠT do bạn yêu cầu: 0xCFCFCF)
             const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
 
             // Vật liệu Tường trước/sau cửa (Màu Vàng Nhạt Tối Hơn)
-            const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
+            //const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
 
 
             // ==== TƯỜNG PHÒNG 1 (DÙNG VẬT LIỆU MỚI) ====
@@ -334,11 +335,29 @@
             floor.rotation.x = -Math.PI / 2;
             scene.add(floor);
 
-            const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
-            ceiling.position.y = roomH;
-            ceiling.rotation.x = Math.PI / 2;
-            scene.add(ceiling);
+            //const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
+            //ceiling.position.y = roomH;
+            //ceiling.rotation.x = Math.PI / 2;
+            //scene.add(ceiling);
 
+            // Texture bầu trời
+            const skyTex = new THREE.TextureLoader().load("sku.jpg");
+            skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
+            skyTex.repeat.set(1, 1); // chỉnh số lần lặp
+            skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            skyTex.minFilter = THREE.LinearFilter;
+
+            // Đổi tên biến để không bị trùng
+            const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
+                map: skyTex, 
+                side: THREE.DoubleSide 
+            });
+
+            const ceilingSky = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingSkyMat);
+            ceilingSky.rotation.x = Math.PI / 2;   // xoay ngược so với sàn
+            ceilingSky.position.y = roomH;         // đặt lên trên cao
+            scene.add(ceilingSky);
+            
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
             createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
 
@@ -595,13 +614,13 @@
 
             // Tường sau (z = -5.9) - 3 tranh (ở -5, 0, 5) - GIỮ NGUYÊN
             const zBack = -roomD / 2 + 0.1; // -5.9
-            addArtPiece(-5, yPosHorizontal, zBack, 0, artW, artH, "Cách mạng Tháng Tám 1945 thắng lợi", "content_room1/SSvid.net--Ngày-19-8-1945-Cách-mạng-Tháng-Tám-thành-công_720p.mp4",
-                "Cách mạng Tháng Tám 1945 thắng lợi", "video");
+            addArtPiece(5, yPosHorizontal, zBack, 0, artW, artH, "Cách mạng Tháng Tám 1945 thắng lợi", "content_room1/SSvid.net--Ngày-19-8-1945-Cách-mạng-Tháng-Tám-thành-công_720p.mp4",
+                "Bối cảnh: Cuối năm 1944 – đầu 1945, Chiến tranh thế giới thứ II bước vào giai đoạn kết thúc; Nhật đầu hàng, tình hình chính trị – kinh tế trong nước rối ren, nạn đói lan rộng, lực lượng cách mạng đã chuẩn bị sẵn. Khởi nghĩa: Từ ngày 13/8/1945, Ủy ban Khởi nghĩa ra “Quân lệnh số 1”, phát động Tổng khởi nghĩa. 16/8: Đại hội Tân Trào thông qua 10 chính sách, chọn quốc kỳ, quốc ca, thành lập Chính phủ lâm thời. 19/8: Khởi nghĩa giành chính quyền tại Hà Nội. 23/8 ở Huế, 25/8 ở Sài Gòn, và đến 28/8 hầu hết tỉnh thành giành chính quyền. 30/8: Vua Bảo Đại thoái vị, chấm dứt chế độ quân chủ. Kết quả & ý nghĩa:Ngày 2/9/1945: Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa. Lật đổ ách thực dân Pháp, phát xít Nhật và chế độ phong kiến; nhân dân lần đầu tiên làm chủ chính quyền. Mở ra kỷ nguyên độc lập, tự do và định hướng xã hội chủ nghĩa cho đất nước.", "video");
 
             addArtPiece(0, yPosHorizontal, zBack, 0, artW, artH, "Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập", "content_room1/SSvid.net--Bác-Hồ-đọc-Tuyên-ngôn-Độc-lập-ngày-2-9-1945_480.mp4",
                 "Ngày 2/9/1945: Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, chính thức thành lập nước Việt Nam Dân chủ Cộng hòa. Cách mạng Tháng Tám lật đổ ách thực dân Pháp, phát xít Nhật, bạo quyền phong kiến; mở ra kỷ nguyên độc lập, tự do, nhân dân làm chủ vận mệnh đất nước.", "video");
 
-            addArtPiece(5, yPosHorizontal, zBack, 0, artW, artH, "HIỆP ĐỊNH GIƠ NE VƠ", "content_room1/SSvid.net--HIỆP-ĐỊNH-GIƠ-NE-VƠ-1954_360.mp4",
+            addArtPiece(-5, yPosHorizontal, zBack, 0, artW, artH, "HIỆP ĐỊNH GIƠ NE VƠ", "content_room1/SSvid.net--HIỆP-ĐỊNH-GIƠ-NE-VƠ-1954_360.mp4",
                 "Sau Hiệp định Genève 1954, Việt Nam chia hai miền, miền Bắc bắt đầu tiến hành xây dựng chủ nghĩa xã hội: cải cách ruộng đất, quốc hữu hóa các ngành chủ chốt, phát triển công nghiệp chủ yếu phục vụ chiến tranh và phục hồi đất nước.Trong khi đó, miền Nam tiếp tục đấu tranh chống Mỹ — nhân dân miền Bắc vừa sản xuất vừa chi viện, chiến đấu để giải phóng miền Nam, thống nhất đất nước.", "video");
 
             // Tường trái (x = -7.9) - 2 tranh xếp ngang theo chiều sâu (Z)
