@@ -348,16 +348,14 @@
             skyTex.minFilter = THREE.LinearFilter;
 
             // Đổi tên biến để không bị trùng
-            const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
-                map: skyTex, 
-                side: THREE.DoubleSide 
-            });
-
-            const ceilingSky = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingSkyMat);
-            ceilingSky.rotation.x = Math.PI / 2;   // xoay ngược so với sàn
-            ceilingSky.position.y = roomH;         // đặt lên trên cao
+            const ceilingSky = new THREE.Mesh(
+                new THREE.PlaneGeometry(roomW * 2, roomD * 2), // mở rộng gấp đôi
+                ceilingSkyMat
+            );
+            ceilingSky.rotation.x = Math.PI / 2;
+            ceilingSky.position.y = roomH;
             scene.add(ceilingSky);
-            
+
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
             createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
 
