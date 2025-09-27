@@ -340,29 +340,36 @@
             //ceiling.rotation.x = Math.PI / 2;
             //scene.add(ceiling);
 
-            // ====== TRẦN BẦU TRỜI ======
+            // Hàm tạo trần bầu trời cho 1 phòng
+            function addCeilingSky(centerX, centerZ) {
+                const skyTex = new THREE.TextureLoader().load("sku.jpg");
+                skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
+                skyTex.repeat.set(1, 1);
+                skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+                skyTex.minFilter = THREE.LinearFilter;
 
-            // Load texture bầu trời
-            const skyTex = new THREE.TextureLoader().load("sku.jpg");
-            skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
-            skyTex.repeat.set(1, 1); // Không lặp
-            skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            skyTex.minFilter = THREE.LinearFilter;
+                const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
+                    map: skyTex, 
+                    side: THREE.DoubleSide 
+                });
 
-            // Material cho trần bầu trời
-            const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
-                map: skyTex, 
-                side: THREE.DoubleSide 
-            });
+                const ceilingSky = new THREE.Mesh(
+                    new THREE.PlaneGeometry(roomW, roomD),
+                    ceilingSkyMat
+                );
+                ceilingSky.rotation.x = Math.PI / 2;
+                ceilingSky.position.set(centerX, roomH, centerZ); 
+                scene.add(ceilingSky);
+            }
 
-            // Tạo mesh trần bầu trời (bao trùm cả phòng)
-            const ceilingSky = new THREE.Mesh(
-                new THREE.PlaneGeometry(roomW, roomD), // vừa khít phòng
-                ceilingSkyMat
-            );
-            ceilingSky.rotation.x = Math.PI / 2;   // quay nằm ngang
-            ceilingSky.position.set(0, roomH, 0); // đặt đúng cao độ trần
-            scene.add(ceilingSky);
+// Thêm trần cho phòng 1 (ở gốc toạ độ)
+addCeilingSky(0, 0);
+
+// Thêm trần cho phòng 2 (nếu nó nằm bên phải phòng 1)
+addCeilingSky(roomW, 0);
+
+// Nếu phòng 2 nằm phía sau phòng 1 thì dùng:
+// addCeilingSky(0, roomD);
             
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
             createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
