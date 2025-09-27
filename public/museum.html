@@ -297,7 +297,7 @@
             //const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
 
             // Vật liệu Trần (Màu trắng NHẠT do bạn yêu cầu: 0xCFCFCF)
-            const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
+            //const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
 
             // Vật liệu Tường trước/sau cửa (Màu Vàng Nhạt Tối Hơn)
             //const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
@@ -374,7 +374,7 @@
 // addCeilingSky(0, roomD);
             
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
-            createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
+            createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, null, darkerWallMat);
 
             // ==== CONTROLS VÀ SỰ KIỆN (GIỮ NGUYÊN) ====
             controls = new THREE.PointerLockControls(camera, renderer.domElement);
