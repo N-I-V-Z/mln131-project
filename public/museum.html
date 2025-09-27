@@ -350,11 +350,11 @@
             const ceilingMaterial = new THREE.MeshStandardMaterial({ 
             map: skyTexture,
             side: THREE.BackSide // để nhìn từ dưới lên thấy texture
-});
-const ceiling = new THREE.Mesh(ceilingGeometry, ceilingMaterial);
-ceiling.rotation.x = Math.PI / 2;
-ceiling.position.y = roomHeight;
-scene.add(ceiling);
+            });
+            const ceiling = new THREE.Mesh(ceilingGeometry, ceilingMaterial);
+            ceiling.rotation.x = Math.PI / 2;
+            ceiling.position.y = roomHeight;
+            scene.add(ceiling);
 
 
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
