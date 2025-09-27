@@ -266,7 +266,7 @@
 
             // 1. Tải Texture Tường (Texture Xi Măng Đánh Bóng)
             // SỬ DỤNG FILE museum_wall_texture.jpg (giả định đã nằm cùng thư mục)
-            const wallTex = new THREE.TextureLoader().load("TBT_CG_0101_1_DIFFUSE.jpg");
+            const wallTex = new THREE.TextureLoader().load("Texturelabs_Brick_141S.jpg");
             wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
             wallTex.repeat.set(1, 1); // Lặp lại 4 lần ngang (X) và 2 lần dọc (Y/H)
             wallTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -347,15 +347,20 @@
             skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
             skyTex.minFilter = THREE.LinearFilter;
 
-            // Đổi tên biến để không bị trùng
+            // Tạo material cho trần bầu trời
+            const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
+                map: skyTex, 
+                side: THREE.DoubleSide 
+            });
+            
             const ceilingSky = new THREE.Mesh(
-                new THREE.PlaneGeometry(roomW * 2, roomD * 2), // mở rộng gấp đôi
+                new THREE.PlaneGeometry(roomW * 2, roomD * 2), 
                 ceilingSkyMat
             );
             ceilingSky.rotation.x = Math.PI / 2;
             ceilingSky.position.y = roomH;
             scene.add(ceilingSky);
-
+            
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
             createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
 
