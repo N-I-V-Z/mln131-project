@@ -354,11 +354,11 @@
             });
             
             const ceilingSky = new THREE.Mesh(
-                new THREE.PlaneGeometry(roomW * 2, roomD * 2), 
+                new THREE.PlaneGeometry(roomW * 2, roomD), // dài gấp đôi chiều rộng phòng
                 ceilingSkyMat
             );
             ceilingSky.rotation.x = Math.PI / 2;
-            ceilingSky.position.y = roomH;
+            ceilingSky.position.set(roomW / 2, roomH, 0); // dịch ra giữa 2 phòng
             scene.add(ceilingSky);
             
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
