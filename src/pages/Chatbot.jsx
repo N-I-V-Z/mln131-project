@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import OpenAI from "openai/index.js";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Lottie from "lottie-react";
-import anima from "../assets/anima-bot.json";
+import anima from "../assets/anima-bot.json"; // animation robot
 import { Bot } from "lucide-react";
 
 export default function Chatbot() {
@@ -17,28 +18,36 @@ export default function Chatbot() {
 
   Yêu cầu khi trả lời:
   1. Trình bày hoàn toàn bằng tiếng Việt, văn phong chuẩn mực, dễ hiểu.
-  2. Sử dụng ví dụ lịch sử hoặc thực tiễn minh họa về nhà nước xã hội chủ nghĩa (ở Việt Nam hoặc quốc tế).
-  3. Kết luận ngắn gọn, nhấn mạnh ý nghĩa của nhà nước XHCN trong tiến trình xây dựng chủ nghĩa xã hội.
-  4. Chỉ trả lời những gì liên quan đến chủ đề nhà nước xã hội chủ nghĩa trong Chủ nghĩa xã hội khoa học Mác-Lênin.
-  5. Với những câu hỏi trả lời ngắn gọn, xúc tích dễ hiểu và có ví dụ minh họa.
-  6. Không trả lời những câu hỏi ngoài phạm vi trên.
-  7. Quan điểm Mác-Lênin về nhà nước xã hội chủ nghĩa luôn đúng và phù hợp với thực tiễn phát triển xã hội.
-  8. Và quan trọng nhất, không có ý định xuyên tạc về nhà nước xã hội chủ nghĩa.
+  2. Sử dụng ví dụ lịch sử hoặc thực tiễn minh họa về nhà nước xã hội chủ nghĩa.
+  3. Kết luận ngắn gọn, nhấn mạnh ý nghĩa.
+  4. Không trả lời ngoài phạm vi trên.
+  5. Quan điểm Mác-Lênin về nhà nước xã hội chủ nghĩa luôn đúng.
   `;
+
+  const client = new OpenAI({
+    apiKey: import.meta.env.VITE_OPENROUTER_KEY,
+    baseURL: "https://openrouter.ai/api/v1",
+    dangerouslyAllowBrowser: true,
+  });
 
   async function sendMessage() {
     if (!input.trim()) return;
     setLoading(true);
     setMessages((p) => [...p, { role: "user", text: input }]);
-
-    // Simulate API response
-    setTimeout(() => {
-      const sampleResponse =
-        "Đây là câu trả lời mẫu về nhà nước xã hội chủ nghĩa theo quan điểm Mác-Lênin. Nhà nước xã hội chủ nghĩa là công cụ của giai급 công nhân để xây dựng và bảo vệ chế độ xã hội chủ nghĩa.";
-      setMessages((p) => [...p, { role: "bot", text: sampleResponse }]);
-      setLoading(false);
-    }, 1500);
-
+    try {
+      const res = await client.chat.completions.create({
+        model: "qwen/qwen3-30b-a3b",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: input },
+        ],
+      });
+      const answer = res.choices[0].message.content;
+      setMessages((p) => [...p, { role: "bot", text: answer }]);
+    } catch {
+      setMessages((p) => [...p, { role: "bot", text: "Lỗi API." }]);
+    }
+    setLoading(false);
     setInput("");
   }
 
@@ -46,21 +55,19 @@ export default function Chatbot() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-red-900 via-red-800 to-yellow-800 flex flex-col items-center justify-start relative">
+      {/* Header */}
       <header className="w-full py-2 flex flex-col items-center justify-center bg-gradient-to-r from-red-900 via-red-800 to-yellow-800 shadow-lg border-b-4 border-yellow-500">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl mb-6 shadow-2xl border-4 border-red-500/30">
             <Bot className="h-10 w-10 text-red-800" />
           </div>
 
-          {/* Tiêu đề gradient chữ */}
           <h1 className="text-3xl font-black bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 bg-clip-text text-transparent mb-6">
-            Trợ Lý AI
+            Trợ Lý AI Nhà nước XHCN
           </h1>
 
-          {/* Mô tả */}
           <p className="text-xl text-red-100/80 max-w-3xl mx-auto leading-relaxed">
-            Giải đáp về nhà nước xã hội chủ nghĩa trong Chủ nghĩa xã hội khoa
-            học Mác-Lênin
+            Giải đáp về nhà nước xã hội chủ nghĩa trong Chủ nghĩa xã hội khoa học Mác-Lênin
             <br />
             <span className="text-yellow-300 font-semibold">
               Hỏi đáp học thuật, ví dụ thực tiễn, kiến thức chuẩn mực
@@ -69,24 +76,16 @@ export default function Chatbot() {
         </div>
       </header>
 
-      {/* Chat Container with Robot */}
+      {/* Chat */}
       <main className="flex-1 w-full flex flex-col items-center justify-start py-10 px-2">
         <div className="w-full max-w-7xl flex items-start gap-8">
-          {/* Robot Animation - Positioned beside chat (LEFT SIDE) */}
+          {/* Robot Animation */}
           <aside className="hidden lg:flex flex-col items-center space-y-4">
             <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-3xl flex items-center justify-center shadow-2xl border-4 border-white/30 backdrop-blur-sm">
-              {/* DotLottieReact Animation */}
               <div className="w-full h-full rounded-3xl overflow-hidden">
-                <Lottie
-                  animationData={anima}
-                  loop
-                  autoplay
-                  className="w-full h-full"
-                />
+                <Lottie animationData={anima} loop autoplay className="w-full h-full" />
               </div>
             </div>
-
-            {/* Optional: Add robot status or info */}
             <div className="text-center">
               <p className="text-yellow-100 text-sm font-medium">Trợ lý AI</p>
               <p className="text-yellow-200 text-xs">Đang hoạt động</p>
@@ -96,10 +95,7 @@ export default function Chatbot() {
           {/* Chat Section */}
           <section
             className="flex-1 bg-white/90 rounded-3xl shadow-2xl border-4 border-yellow-500/70 backdrop-blur-xl flex flex-col"
-            style={{
-              boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)",
-              fontFamily: "Roboto, Arial, Helvetica, sans-serif",
-            }}
+            style={{ boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)" }}
           >
             {/* Messages */}
             <div
@@ -124,12 +120,9 @@ export default function Chatbot() {
                       />
                     </svg>
                   </div>
-                  <p className="text-lg font-medium">
-                    Chào mừng bạn đến với Trợ lý AI!
-                  </p>
+                  <p className="text-lg font-medium">Chào mừng bạn đến với Trợ lý AI!</p>
                   <p className="text-sm text-center mt-2">
-                    Hãy đặt câu hỏi về nhà nước xã hội chủ nghĩa theo quan điểm
-                    Mác-Lênin
+                    Hãy đặt câu hỏi về nhà nước xã hội chủ nghĩa theo quan điểm Mác-Lênin
                   </p>
                 </div>
               )}
@@ -137,9 +130,7 @@ export default function Chatbot() {
               {visibleMessages.map((m, i) => (
                 <div
                   key={i}
-                  className={`flex ${
-                    m.role === "user" ? "justify-end" : "justify-start"
-                  }`}
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
                     className={`max-w-[80%] px-6 py-4 rounded-2xl shadow text-base whitespace-pre-line ${
@@ -148,12 +139,11 @@ export default function Chatbot() {
                         : "bg-gradient-to-r from-[#f5e6c8] to-[#fffbe6] text-[#7b1f1f] border border-yellow-300"
                     }`}
                   >
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {m.text}
-                    </ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{m.text}</ReactMarkdown>
                   </div>
                 </div>
               ))}
+
               {loading && (
                 <div className="flex justify-start mt-2">
                   <div className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-[#f5e6c8] to-[#fffbe6] text-[#7b1f1f] border border-yellow-300 shadow animate-pulse">
@@ -188,7 +178,6 @@ export default function Chatbot() {
               <input
                 type="text"
                 className="flex-1 px-5 py-4 rounded-full border-2 border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-lg bg-white/90"
-                style={{ fontFamily: "Roboto, Arial, Helvetica, sans-serif" }}
                 placeholder="Nhập câu hỏi về nhà nước xã hội chủ nghĩa..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
