@@ -205,7 +205,7 @@ const PartyRole = () => {
                 cy="400"
                 r="320"
                 fill="none"
-                stroke="#e5e7eb"
+                stroke="#7f1d1d"
                 strokeWidth="1"
                 strokeDasharray="5,5"
               />
@@ -214,7 +214,7 @@ const PartyRole = () => {
                 cy="400"
                 r="280"
                 fill="none"
-                stroke="#d1d5db"
+                stroke="#991b1b"
                 strokeWidth="2"
                 strokeDasharray="10,5"
               />
