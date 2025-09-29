@@ -11,8 +11,6 @@ export default function Footer() {
 
           <div className="flex justify-center space-x-6 mt-4 text-sm font-medium">
             <a href="/" className="hover:underline">Trang chủ</a>
-            <a href="/about" className="hover:underline">Giới thiệu</a>
-            <a href="/contact" className="hover:underline">Liên hệ</a>
           </div>
 
           <hr className="my-4 border-gray-400 opacity-50" />
