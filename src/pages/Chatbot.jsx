@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -10,7 +10,6 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const chatEndRef = useRef(null);
 
   const SYSTEM_PROMPT = `
   Bạn là một trợ lý AI chuyên sâu về khoa học chính trị, đặc biệt là chủ đề nhà nước xã hội chủ nghĩa trong Chủ nghĩa xã hội khoa học Mác-Lênin.
@@ -47,14 +46,14 @@ export default function Chatbot() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-red-900 via-red-800 to-yellow-800 flex flex-col items-center justify-start relative">
-      <header className="w-full py-16 flex flex-col items-center justify-center bg-gradient-to-r from-red-900 via-red-800 to-yellow-800 shadow-lg border-b-4 border-yellow-500">
+      <header className="w-full py-2 flex flex-col items-center justify-center bg-gradient-to-r from-red-900 via-red-800 to-yellow-800 shadow-lg border-b-4 border-yellow-500">
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl mb-6 shadow-2xl border-4 border-red-500/30">
             <Bot className="h-10 w-10 text-red-800" />
           </div>
 
           {/* Tiêu đề gradient chữ */}
-          <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 bg-clip-text text-transparent mb-6">
+          <h1 className="text-3xl font-black bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 bg-clip-text text-transparent mb-6">
             Trợ Lý AI
           </h1>
 

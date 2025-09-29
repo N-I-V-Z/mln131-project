@@ -428,7 +428,7 @@ const Quiz = () => {
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl mb-6 shadow-2xl border-4 border-red-500/30">
               <Brain className="h-10 w-10 text-red-800" />
             </div>
-            <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 bg-clip-text text-transparent mb-6">
+            <h1 className="text-3xl font-black bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 bg-clip-text text-transparent mb-3">
               Quiz Ôn Tập
             </h1>
             <p className="text-xl text-red-100/80 max-w-2xl mx-auto leading-relaxed">
@@ -448,7 +448,7 @@ const Quiz = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Target className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-red-400 transition-colors">
+                <h3 className="text-2xl font-bold text-red-300 mb-4 group-hover:text-red-400 transition-colors">
                   Chế độ Kiểm tra
                 </h3>
                 <div className="space-y-3 text-red-400 mb-6">
@@ -486,7 +486,7 @@ const Quiz = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                   <BookOpen className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                <h3 className="text-2xl font-bold text-emerald-300 mb-4 group-hover:text-emerald-400 transition-colors">
                   Chế độ Ôn tập
                 </h3>
                 <div className="space-y-3 text-emerald-400 mb-6">

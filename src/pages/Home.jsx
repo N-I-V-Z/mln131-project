@@ -109,7 +109,7 @@ const Home = () => {
             <h1 className="py-8 text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-200 via-yellow-200 to-red-200 mb-6 leading-tight">
               Nhà nước
               <br />
-              Xã Hội CHủ Nghĩa
+              Xã Hội Chủ Nghĩa
             </h1>
 
             <div className="text-2xl md:text-3xl text-yellow-200 mb-6 font-bold">

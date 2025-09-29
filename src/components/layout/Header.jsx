@@ -77,12 +77,12 @@ const Header = () => {
 
           {/* Study Progress Indicator (Desktop) */}
           <div className="hidden lg:flex items-center space-x-3">
-            <div className="flex items-center space-x-2 px-3 py-1 bg-yellow-400/20 rounded-full border border-yellow-400/30">
+            {/* <div className="flex items-center space-x-2 px-3 py-1 bg-yellow-400/20 rounded-full border border-yellow-400/30">
               <BookOpen className="w-4 h-4 text-yellow-300" />
               <span className="text-xs text-yellow-200 font-medium">
                 Học tập
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Mobile menu button */}
