@@ -266,7 +266,7 @@
 
             // 1. Tải Texture Tường (Texture Xi Măng Đánh Bóng)
             // SỬ DỤNG FILE museum_wall_texture.jpg (giả định đã nằm cùng thư mục)
-            const wallTex = new THREE.TextureLoader().load("TBT_CG_0101_1_DIFFUSE.jpg");
+            const wallTex = new THREE.TextureLoader().load("Texturelabs_Brick_141S.jpg");
             wallTex.wrapS = wallTex.wrapT = THREE.RepeatWrapping;
             wallTex.repeat.set(1, 1); // Lặp lại 4 lần ngang (X) và 2 lần dọc (Y/H)
             wallTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -297,7 +297,7 @@
             //const museumWallMat = new THREE.MeshLambertMaterial({ color: lightYellowColor });
 
             // Vật liệu Trần (Màu trắng NHẠT do bạn yêu cầu: 0xCFCFCF)
-            const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
+            //const ceilingMat = new THREE.MeshBasicMaterial({ color: 0xCFCFCF });
 
             // Vật liệu Tường trước/sau cửa (Màu Vàng Nhạt Tối Hơn)
             //const darkerWallMat = new THREE.MeshLambertMaterial({ color: darkerYellowColor });
@@ -340,26 +340,41 @@
             //ceiling.rotation.x = Math.PI / 2;
             //scene.add(ceiling);
 
-            // Texture bầu trời
-            const skyTex = new THREE.TextureLoader().load("sku.jpg");
-            skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
-            skyTex.repeat.set(1, 1); // chỉnh số lần lặp
-            skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            skyTex.minFilter = THREE.LinearFilter;
+            // Hàm tạo trần bầu trời cho 1 phòng (CẬP NHẬT: TỐI ƯU HÓA)
+            function addCeilingSky(centerX, centerZ) {
+                const skyTex = new THREE.TextureLoader().load("sku.jpg");
+                skyTex.wrapS = skyTex.wrapT = THREE.RepeatWrapping;
+                skyTex.repeat.set(1, 1);
+                skyTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+                skyTex.minFilter = THREE.LinearFilter;
 
-            // Đổi tên biến để không bị trùng
-            const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
-                map: skyTex, 
-                side: THREE.DoubleSide 
-            });
+                const ceilingSkyMat = new THREE.MeshStandardMaterial({ 
+                    map: skyTex, 
+                    side: THREE.DoubleSide 
+                });
 
-            const ceilingSky = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingSkyMat);
-            ceilingSky.rotation.x = Math.PI / 2;   // xoay ngược so với sàn
-            ceilingSky.position.y = roomH;         // đặt lên trên cao
-            scene.add(ceilingSky);
+                const ceilingSky = new THREE.Mesh(
+                    new THREE.PlaneGeometry(roomW, roomD),
+                    ceilingSkyMat
+                );
+                ceilingSky.rotation.x = Math.PI / 2;
+                ceilingSky.position.set(centerX, roomH, centerZ); 
+                scene.add(ceilingSky);
+    
+                return ceilingSky; // Trả về đối tượng để quản lý nếu cần
+            }
+
+            // Thêm trần cho phòng 1 (ở gốc toạ độ)
+            addCeilingSky(0, 0);
+
+            // Thêm trần cho phòng 2 (nếu nó nằm bên phải phòng 1)
+            addCeilingSky(roomW, 0);
+
+// Nếu phòng 2 nằm phía sau phòng 1 thì dùng:
+// addCeilingSky(0, roomD);
             
             // ==== PHÒNG 2 (DÙNG VẬT LIỆU MỚI) ====
-            createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, ceilingMat, darkerWallMat);
+            createSecondRoom(roomW, roomH, roomD, museumWallMat, floorMat, null, darkerWallMat);
 
             // ==== CONTROLS VÀ SỰ KIỆN (GIỮ NGUYÊN) ====
             controls = new THREE.PointerLockControls(camera, renderer.domElement);
@@ -482,10 +497,10 @@
             room2Group.add(floor2);
 
             // Trần
-            const ceiling2 = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
-            ceiling2.position.set(room2OffsetX, roomH, 0);
-            ceiling2.rotation.x = Math.PI / 2;
-            room2Group.add(ceiling2);
+            //const ceiling2 = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomD), ceilingMat);
+            //ceiling2.position.set(room2OffsetX, roomH, 0);
+            //ceiling2.rotation.x = Math.PI / 2;
+            //room2Group.add(ceiling2);
 
             scene.add(room2Group);
 
