@@ -1017,20 +1017,6 @@ const MacLeninConcept = () => {
     setCurrent((prev) => (prev - 1 + total) % total);
   };
 
-  const getColorClasses = (color) => {
-    const colors = {
-      blue: "from-blue-900 via-indigo-900 to-purple-900",
-      yellow: "from-yellow-900 via-orange-900 to-red-900",
-      purple: "from-purple-900 via-violet-900 to-indigo-900",
-      cyan: "from-cyan-900 via-blue-900 to-indigo-900",
-      pink: "from-pink-900 via-rose-900 to-red-900",
-      indigo: "from-indigo-900 via-purple-900 to-blue-900",
-      emerald: "from-emerald-900 via-green-900 to-teal-900",
-      amber: "from-amber-900 via-yellow-900 to-orange-900",
-    };
-    return colors[color] || colors.blue;
-  };
-
   const section = sections[current];
   const progress = ((current + 1) / total) * 100;
   const IconComponent = section.icon;
@@ -1046,7 +1032,7 @@ const MacLeninConcept = () => {
             <IconComponent className="h-10 w-10 text-red-800" />
           </div>
           <h1
-            className="text-3xl md:text-5xl font-bold mb-4 leading-tight 
+            className="text-5xl font-bold mb-4 leading-tight 
                bg-gradient-to-r from-yellow-200 via-red-200 to-yellow-200 
                bg-clip-text text-transparent"
           >
