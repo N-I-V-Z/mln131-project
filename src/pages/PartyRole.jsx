@@ -362,8 +362,8 @@ const PartyRole = () => {
                   cx="400"
                   cy="400"
                   r="80"
-                  fill="#dc2626"
-                  stroke="#fbbf24"
+                  fill="#7f1d1d"
+                  stroke="#"
                   strokeWidth="4"
                   filter="url(#softShadow)"
                 />
@@ -374,7 +374,7 @@ const PartyRole = () => {
                   cy="400"
                   r="62"
                   fill="none"
-                  stroke="#fbbf24"
+                  stroke="#b91c1c"
                   strokeWidth="6"
                   opacity={activeSection ? 0.95 : 0.18}
                   style={{ transition: "opacity 0.25s, transform 0.3s" }}
