@@ -20,279 +20,270 @@ const Quiz = () => {
   const questions = [
     {
       id: 1,
-      question:
-        "Khái niệm nào mô tả đúng nhất về 'Nhà nước xã hội chủ nghĩa (NNXHCN)' trong khung Mác–Lênin?",
+      question: "Trong khung Mác–Lênin, NNXHCN được hiểu đúng nhất là:",
       options: [
-        "Công cụ quản lý trung lập của mọi giai cấp",
-        "Nhà nước kiểu mới trong thời kỳ quá độ lên CNXH do giai cấp công nhân liên minh lao động lãnh đạo",
-        "Biến thể của nhà nước tư sản phúc lợi",
-        "Tổ chức xã hội dân sự tự quản",
+        "Thiết chế quyền lực trung lập, vận hành phi giai cấp, duy trì trật tự xã hội hiện có.",
+        "Nhà nước kiểu cũ của CNTB, tiếp tục tồn tại, điều tiết mâu thuẫn, không đổi bản chất.",
+        "Nhà nước kiểu mới thời quá độ, do giai cấp công nhân lãnh đạo trong liên minh lao động.",
+        "Tổ chức xã hội dân sự tự quản, thay thế nhà nước, hoạt động dựa thuần cơ chế tự nguyện.",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "NNXHCN là nhà nước kiểu mới trong thời kỳ quá độ lên CNXH, do giai cấp công nhân liên minh với các lực lượng lao động lãnh đạo. Không trung lập giai cấp, không là biến thể tư sản, càng không phải hội tự quản.",
+        "NNXHCN là nhà nước kiểu mới thời kỳ quá độ lên CNXH, do giai cấp công nhân lãnh đạo trong liên minh công–nông–trí; không trung lập giai cấp, không phải dạng nhà nước tư sản hay hội tự quản.",
     },
     {
       id: 2,
-      question:
-        "Theo duy vật lịch sử, sự ra đời của NNXHCN gắn với nhân tố quyết định nào?",
+      question: "Cơ sở tất yếu làm nảy sinh NNXHCN gắn với:",
       options: [
-        "Tam quyền tuyệt đối độc lập",
-        "Phát triển lực lượng sản xuất và điều chỉnh quan hệ sản xuất phù hợp",
-        "Trưng cầu ý dân định kỳ",
-        "Tư hữu tư liệu sản xuất là chủ đạo",
+        "Biến động dân số đô thị, buộc tập quyền mạnh, không đổi hình thái sở hữu.",
+        "Thay đổi thuần ý chí chính trị, không phụ thuộc cơ sở kinh tế–xã hội.",
+        "Phát triển lực lượng sản xuất, đòi điều chỉnh quan hệ sản xuất và thượng tầng tương thích.",
+        "Suy giảm văn hoá truyền thống, cần xây bộ máy cưỡng chế văn hoá mới.",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Theo duy vật lịch sử, khi lực lượng sản xuất phát triển, quan hệ sản xuất và hình thức nhà nước phải đổi theo. NNXHCN ra đời do biến đổi kinh tế–xã hội chứ không thuần ý chí hay thủ tục.",
+        "Theo phép biện chứng cơ sở–thượng tầng: khi lực lượng sản xuất phát triển, cần điều chỉnh quan hệ sản xuất và thể chế tương ứng.",
     },
     {
       id: 3,
-      question: "“Dân chủ XHCN” trong nhà nước kiểu mới được hiểu là gì?",
+      question: "“Chức năng kép” của nhà nước kiểu mới thể hiện ở:",
       options: [
-        "Chỉ là phương tiện quản trị",
-        "Vừa là giá trị vừa là phương thức vận hành quyền lực",
-        "Chỉ là thủ tục bầu cử",
-        "Chỉ là khẩu hiệu",
+        "Trợ giá đại trà; miễn thuế phổ quát; ưu tiên kinh tế hơn pháp luật.",
+        "Trấn áp chống phá cách mạng; tổ chức xây dựng đời sống mới kinh tế–văn hoá–xã hội.",
+        "Khép kín thị trường nội địa; kiểm soát luồng vốn; hạn chế hợp tác quốc tế.",
+        "Giảm tối đa pháp luật; mở rộng uỷ quyền ngoài nhà nước theo lệ làng.",
       ],
       correct: 1,
       explanation:
-        "Dân chủ XHCN vừa là giá trị mục tiêu (quyền lực thuộc về nhân dân) vừa là phương thức vận hành (tổ chức quyền lực để dân tham gia, kiểm soát).",
+        "NNXHCN vừa thực hiện chức năng chính trị (bảo vệ cách mạng), vừa kiến tạo xã hội–kinh tế mới cho quần chúng.",
     },
     {
       id: 4,
-      question: "Cơ sở xã hội của NNXHCN là liên minh nào?",
+      question: "Dân chủ XHCN trong nhà nước kiểu mới được hiểu là:",
       options: [
-        "Công – thương – ngân hàng",
-        "Công – nông – trí thức",
-        "Nông – thương – địa chủ",
-        "Trí – thương – tư bản",
+        "Chỉ là mục tiêu cuối kỳ; không phải phương thức quản trị trong vận hành.",
+        "Thủ tục bầu cử định kỳ; không gắn cơ chế pháp chế và trách nhiệm.",
+        "Vừa giá trị mục tiêu, vừa phương thức mở rộng quyền lực nhân dân có kỷ cương.",
+        "Thay thế hoàn toàn pháp luật; ưu tiên tham vấn xã hội hơn mọi ràng buộc.",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Cơ sở xã hội của NNXHCN là liên minh công–nông–trí: công nhân giữ vai trò lãnh đạo, nông dân và trí thức là đồng minh quan trọng.",
+        "Dân chủ XHCN vừa là mục tiêu vừa là phương thức quản trị: mở rộng quyền dân chủ trong khuôn khổ pháp chế và kỷ cương.",
     },
     {
       id: 5,
-      question: "Nguyên tắc cốt lõi của pháp quyền XHCN là gì?",
+      question: "Pháp quyền XHCN nhấn mạnh cấu trúc quyền lực theo hướng:",
       options: [
-        "Tập quyền tuyệt đối, không kiểm soát",
-        "Thượng tôn Hiến pháp, quyền lực thống nhất nhưng có phân công, phối hợp, kiểm soát",
-        "Pháp luật nhường chỗ cho đạo đức",
-        "Tòa án tối cao quyết định toàn bộ đường lối",
+        "Tam quyền cắt rời tuyệt đối; phủ định thống nhất quyền lực và kiểm soát nội bộ.",
+        "Tối thượng Hiến pháp–pháp luật; thống nhất quyền lực, có phân công–phối hợp–kiểm soát.",
+        "Tập trung hành pháp tuyệt đối; lập pháp–tư pháp mang tính hình thức bổ trợ.",
+        "Đạo đức xã hội thay pháp luật; chuẩn tắc pháp lý chỉ còn vai trò tham khảo.",
       ],
       correct: 1,
       explanation:
-        "Pháp quyền XHCN: Hiến pháp tối thượng, quyền lực thống nhất nhưng có phân công–phối hợp–kiểm soát giữa lập pháp, hành pháp, tư pháp; mọi người bình đẳng trước pháp luật.",
+        "Pháp quyền XHCN đặt Hiến pháp–pháp luật tối thượng; quyền lực thống nhất nhưng có phân công, phối hợp và cơ chế kiểm soát nội bộ.",
     },
     {
       id: 6,
-      question:
-        "Vì sao nói NNXHCN có 'bản chất giai cấp công nhân' nhưng đồng thời 'mang tính nhân dân, dân tộc, thời đại'?",
+      question: "Về vai trò Đảng Cộng sản trong NNXHCN, nhận định đúng là:",
       options: [
-        "Chỉ đại diện giai cấp công nhân",
-        "Chỉ đại diện toàn dân, không có tính giai cấp",
-        "Vừa có nền tảng giai cấp, vừa mở rộng đại diện xã hội–dân tộc, hướng tới giải phóng con người",
-        "Không liên quan đến bối cảnh thời đại",
-      ],
-      correct: 2,
-      explanation:
-        "NNXHCN có bản chất giai cấp công nhân nhưng đồng thời mang tính nhân dân, dân tộc, thời đại vì đại diện lợi ích đa số, đặt mục tiêu giải phóng con người.",
-    },
-    {
-      id: 7,
-      question:
-        "Phân biệt chức năng 'đối nội/đối ngoại' của NNXHCN (chọn phương án đúng nhất):",
-      options: [
-        "Đối nội: quân sự; Đối ngoại: văn hóa",
-        "Đối nội: ngoại giao; Đối ngoại: lập pháp",
-        "Đối nội: phát triển kinh tế-xã hội, an sinh, pháp chế; Đối ngoại: bảo vệ chủ quyền, hợp tác–hội nhập",
-        "Cả hai giống nhau",
-      ],
-      correct: 2,
-      explanation:
-        "Đối nội: phát triển kinh tế, văn hóa, an sinh–công bằng, pháp chế. Đối ngoại: bảo vệ chủ quyền, hợp tác–hội nhập vì hòa bình–phát triển.",
-    },
-    {
-      id: 8,
-      question:
-        "Quan hệ 'cơ sở hạ tầng – kiến trúc thượng tầng' trong hình thành NNXHCN được hiểu thế nào?",
-      options: [
-        "Kiến trúc thượng tầng quyết định tuyệt đối cơ sở hạ tầng",
-        "Cơ sở kinh tế quyết định NNXHCN, đồng thời nhà nước phản hồi tác động trở lại",
-        "Hai yếu tố độc lập, không ảnh hưởng nhau",
-        "Phụ thuộc hoàn toàn vào ý chí cá nhân lãnh đạo",
+        "Đảng đứng ngoài nhà nước; không hoạch định, chỉ giám sát tinh thần.",
+        "Đảng lãnh đạo hệ thống chính trị: đường lối, thể chế hoá, tổ chức thực thi, kiểm tra.",
+        "Đảng chỉ phụ trách tư tưởng; không can dự thể chế và chính sách.",
+        "Đảng chuyển giao quyền cho thị trường; giảm vai trò trong pháp luật.",
       ],
       correct: 1,
       explanation:
-        "Trong quan hệ cơ sở hạ tầng – kiến trúc thượng tầng, kinh tế quyết định nhà nước–pháp luật, đồng thời nhà nước tác động trở lại để tổ chức, điều chỉnh phát triển.",
+        "Đảng lãnh đạo hệ thống chính trị qua hoạch định chủ trương, thể chế hoá, tổ chức thực thi và giám sát, đảm bảo định hướng XHCN.",
+    },
+    {
+      id: 7,
+      question: "Cơ sở kinh tế phù hợp định hướng XHCN bao gồm:",
+      options: [
+        "Sở hữu tư nhân tuyệt đối; nhà nước tối thiểu; pháp luật thuần bảo vệ thị trường.",
+        "Sở hữu công cộng chủ đạo; vận dụng cơ chế thị trường trong khuôn khổ định hướng.",
+        "Xoá mọi hình thức sở hữu khác; kế hoạch hoá cứng; khép kín phân bổ nguồn lực.",
+        "Thả nổi sở hữu, miễn điều tiết; ưu tiên lợi ích cục bộ vượt lợi ích chung.",
+      ],
+      correct: 1,
+      explanation:
+        "Mô hình: sở hữu công cộng chủ đạo đối với tư liệu sản xuất chủ yếu, kết hợp vận dụng cơ chế thị trường theo định hướng XHCN.",
+    },
+    {
+      id: 8,
+      question: "Nền tảng xã hội–giai cấp của quyền lực nhà nước kiểu mới là:",
+      options: [
+        "Liên minh tư sản–địa chủ.",
+        "Liên minh công–nông–trí.",
+        "Liên minh thương nhân–địa phương.",
+        "Liên minh tôn giáo–dòng họ.",
+      ],
+      correct: 1,
+      explanation:
+        "Liên minh công–nông–trí là nền tảng xã hội–giai cấp rộng cho NNXHCN, vừa giữ bản chất công nhân vừa có tính nhân dân–dân tộc.",
     },
     {
       id: 9,
       question:
-        "Vì sao kết hợp cơ chế thị trường không phủ nhận vai trò chủ đạo của sở hữu công cộng?",
+        "Luận đề về “thu hẹp chức năng cưỡng chế” được hiểu chính xác là:",
       options: [
-        "Vì thị trường thay thế mọi cơ chế kế hoạch",
-        "Vì sở hữu công cộng chỉ còn hình thức",
-        "Vì thị trường là công cụ phân bổ nguồn lực trong khuôn khổ định hướng XHCN",
-        "Vì pháp luật không điều chỉnh kinh tế",
+        "Xoá bỏ ngay bộ máy nhà nước sau thắng lợi cách mạng chính trị.",
+        "Chỉ xảy ra khi tăng trưởng thấp; cưỡng chế giảm để kích thích tiêu dùng.",
+        "Khi đối kháng giai cấp phai nhạt, nhà nước dần thiên về quản trị xã hội tự giác.",
+        "Khi hội nhập sâu, pháp luật quốc gia mất vai trò điều chỉnh chủ đạo.",
       ],
       correct: 2,
       explanation:
-        "Cơ chế thị trường là công cụ phân bổ nguồn lực hiệu quả trong khuôn khổ định hướng XHCN, không phủ nhận vai trò chủ đạo của sở hữu công cộng ở lĩnh vực then chốt.",
+        "Ý nghĩa lịch sử: khi đối kháng giai cấp giảm, chức năng cưỡng chế thu hẹp, tăng quản trị bằng pháp chế và tự quản xã hội.",
     },
     {
       id: 10,
-      question: "'Tập trung dân chủ' được hiểu đúng là gì?",
+      question: "Trong các mục tiêu đối nội, nội dung không phù hợp NNXHCN là:",
       options: [
-        "Dân chủ thuần túy, không cần kỷ luật",
-        "Kết hợp lãnh đạo tập trung với phát huy dân chủ, bảo đảm kỷ luật–trách nhiệm",
-        "Chỉ tập trung, không dân chủ",
-        "Toàn quyền cho cấp cơ sở",
+        "Tổ chức phát triển kinh tế–văn hoá; nâng cao chất lượng đời sống nhân dân.",
+        "Bảo đảm an sinh, công bằng, bình đẳng; chống tham nhũng, lợi ích nhóm.",
+        "Hạn chế quyền công dân tuỳ tiện; đặt ngoại lệ ngoài khung pháp luật.",
+        "Hoàn thiện pháp luật; củng cố pháp chế; bảo vệ trật tự an toàn xã hội.",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Tập trung dân chủ = vừa lãnh đạo tập trung, vừa phát huy dân chủ, kèm kỷ luật–trách nhiệm. Tránh cực đoan 'chỉ tập trung' hay 'dân chủ vô kỷ luật'.",
+        "Hạn chế quyền công dân tuỳ tiện và ngoại lệ ngoài pháp luật mâu thuẫn với tinh thần pháp quyền XHCN.",
     },
     {
       id: 11,
-      question:
-        "Để triển khai nhanh một chính sách an sinh toàn quốc, bộ công cụ phù hợp nhất là:",
+      question: "Về chức năng đối ngoại, phương án phù hợp là:",
       options: [
-        "Vận động quần chúng đơn thuần",
-        "Chỉ dùng biện pháp hành chính",
-        "Pháp luật + tài chính-ngân sách + truyền thông/giáo dục",
-        "Tự quản cộng đồng không có khung pháp lý",
+        "Bế quan toả cảng; loại bỏ chuẩn mực pháp lý quốc tế đã thừa nhận.",
+        "Bảo vệ độc lập–chủ quyền; hợp tác–hội nhập; đóng góp hoà bình–phát triển.",
+        "Uỷ quyền toàn bộ chính sách ngoại giao cho tổ chức phi nhà nước.",
+        "Ưu tiên lợi ích nhóm; coi nhẹ trách nhiệm quốc tế và lợi ích dân tộc.",
       ],
-      correct: 2,
+      correct: 1,
       explanation:
-        "Triển khai an sinh toàn quốc cần ba chân kiềng: pháp luật (quyền, đối tượng, thủ tục), tài chính–ngân sách (nguồn lực), và truyền thông/giáo dục (đồng thuận, tiếp cận).",
+        "NNXHCN kết hợp bảo vệ chủ quyền với hợp tác và hội nhập nhằm hoà bình và phát triển quốc gia.",
     },
     {
       id: 12,
-      question:
-        "Tiêu chí đánh giá minh bạch và trách nhiệm giải trình của cơ quan công quyền là gì?",
+      question: "“Tập trung dân chủ” trong tổ chức–vận hành được hiểu là:",
       options: [
-        "Báo cáo nội bộ kín, không công khai",
-        "Quy trình phức tạp, khó tiếp cận",
-        "Công khai thông tin, chuẩn hóa quy trình, cơ chế giải trình & dữ liệu mở",
-        "Tăng biên chế",
+        "Dân chủ hoàn toàn; không cần kỷ luật, không cần thống nhất quyết định.",
+        "Thảo luận có dân chủ; quyết định tập trung; thực thi thống nhất, có trách nhiệm.",
+        "Chỉ tập trung; loại bỏ thảo luận; ưu tiên mệnh lệnh hành chính tuyệt đối.",
+        "Phân tán quyết định; mỗi đơn vị tự chủ; thiếu cơ chế phối hợp ràng buộc.",
       ],
-      correct: 2,
+      correct: 1,
       explanation:
-        "Minh bạch & giải trình thể hiện ở: công khai thông tin, chuẩn hóa quy trình, dữ liệu mở và giám sát xã hội. Không phải 'báo cáo kín' hay 'tăng biên chế'.",
+        "Nguyên tắc: thảo luận dân chủ khi bàn, quyết định tập trung khi ra quyết sách, thực hiện thống nhất và có kỷ luật trách nhiệm.",
     },
     {
       id: 13,
       question:
-        "Luật mới mở rộng tham gia của người dân (trưng cầu ý dân/tiếp công dân) mang lại điều gì?",
+        "Quan hệ cơ sở–thượng tầng gợi mở điều chỉnh chính sách theo hướng:",
       options: [
-        "Tăng tính chính danh & phản biện; thách thức về an ninh dữ liệu & chênh lệch số",
-        "Giảm minh bạch",
-        "Loại bỏ trách nhiệm giải trình",
-        "Không ảnh hưởng hiệu quả quản trị",
+        "Giữ nguyên thể chế, trì hoãn cải cách để tránh xáo trộn dài hạn.",
+        "Hoàn thiện pháp quyền; điều chỉnh quan hệ sản xuất và thiết chế cho tương thích.",
+        "Đưa hoạt động ngoài phạm vi pháp luật; ưu tiên linh hoạt phi chính quy.",
+        "Tạm ngưng đổi mới; chờ ổn định mới cải cách thể chế, pháp luật, nhà nước.",
       ],
-      correct: 0,
+      correct: 1,
       explanation:
-        "Mở rộng kênh tham gia tăng tính chính danh và phản biện, nhưng kèm thách thức về an ninh dữ liệu và chênh lệch số.",
+        "Khi lực lượng sản xuất thay đổi, cần hoàn thiện pháp quyền và điều chỉnh QHSX, thiết chế để tương thích và phát triển.",
     },
     {
       id: 14,
       question:
-        "Cách NNXHCN kiểm soát quyền lực trong thống nhất được hiểu thế nào?",
+        "Trình tự các giai đoạn lịch sử Việt Nam phù hợp logic phát triển là:",
       options: [
-        "Tách rời ba quyền tuyệt đối, không phối hợp",
-        "Quyền lực nhà nước thống nhất nhưng có phân công lập pháp–hành pháp–tư pháp, cơ chế phối hợp–kiểm soát",
-        "Tập trung vào một nhánh",
-        "Giao cho thị trường kiểm soát nhà nước",
+        "1976–1986 → 1945–1954 → 1954–1975 → 1986–nay",
+        "1945–1954 → 1954–1975 → 1976–1986 → 1986–nay",
+        "1954–1975 → 1945–1954 → 1986–nay → 1976–1986",
+        "1986–nay → 1976–1986 → 1954–1975 → 1945–1954",
       ],
       correct: 1,
       explanation:
-        "Mô hình thống nhất quyền lực nhưng có phân công–phối hợp–kiểm soát giữa lập pháp–hành pháp–tư pháp, tránh cực đoan.",
+        "Trình tự lịch sử logic là: 1945–1954, 1954–1975, 1976–1986, 1986–nay (nối tiếp tiền đề đến Đổi mới).",
     },
     {
       id: 15,
       question:
-        "Để gắn tăng trưởng với công bằng ở địa phương, lựa chọn phù hợp nhất là:",
+        "Đặc trưng chính sách nổi bật thời kỳ Đổi mới đối với nhà nước là:",
       options: [
-        "Miễn thuế toàn diện",
-        "Thắt chặt chi tiêu công",
-        "Tăng thu phí dịch vụ công",
-        "Thuế–phí lũy tiến hợp lý, mở rộng dịch vụ công cơ bản, chương trình an sinh chủ động",
+        "Pháp luật nhường chỗ tập quán; giảm yêu cầu minh bạch–giải trình hệ thống.",
+        "Kế hoạch hoá tuyệt đối; xoá cơ chế thị trường; khép kín giao thương.",
+        "Kinh tế thị trường định hướng XHCN; pháp quyền; cải cách hành chính–tư pháp.",
+        "Toàn cầu hoá triệt để; không cần chuẩn mực pháp lý ràng buộc nội bộ.",
       ],
-      correct: 3,
+      correct: 2,
       explanation:
-        "Giải pháp: thuế–phí lũy tiến hợp lý, dịch vụ công cơ bản, chương trình an sinh chủ động. Không phải miễn thuế toàn diện hay tăng phí.",
+        "Đổi mới gắn với mô hình kinh tế thị trường định hướng XHCN, hiện đại hoá pháp quyền và cải cách bộ máy nhà nước.",
     },
     {
       id: 16,
-      question:
-        "Khác biệt bản chất giữa nhà nước tư sản và NNXHCN KHÔNG bao gồm nội dung nào?",
+      question: "Bộ giải pháp quản trị phù hợp bối cảnh hiện nay gồm:",
       options: [
-        "Nền tảng sở hữu (tư hữu chủ đạo vs công cộng chủ đạo)",
-        "Chủ thể quyền lực (tư sản vs nhân dân do giai cấp công nhân lãnh đạo)",
-        "Mục tiêu tối hậu (tối đa hóa lợi nhuận tư vs công bằng–giải phóng con người)",
-        "Không khác biệt về mục tiêu tối hậu",
+        "Tối mật hoá thông tin; thu hẹp giám sát xã hội; giảm trách nhiệm giải trình.",
+        "Minh bạch–giải trình; chuyển đổi số; kiểm soát quyền lực; phòng, chống tham nhũng.",
+        "Xã hội hoá toàn bộ dịch vụ công; loại bỏ vai trò bảo đảm của nhà nước.",
+        "Nới lỏng pháp luật; dựa thiện chí; giảm chế tài; tăng tuỳ nghi hành chính.",
       ],
-      correct: 3,
+      correct: 1,
       explanation:
-        "Phương án D sai: mục tiêu tối hậu của nhà nước tư sản là lợi nhuận tư, NNXHCN là công bằng–giải phóng con người.",
+        "Giải pháp phù hợp là minh bạch và giải trình, chuyển đổi số, kiểm soát quyền lực và chống tham nhũng để nâng hiệu quả quản trị.",
     },
     {
       id: 17,
       question:
-        "Dấu mốc chuyển đổi quan trọng của thời kỳ Đổi mới ở Việt Nam là gì?",
+        "Bảo đảm quyền con người/quyền công dân trong pháp quyền XHCN đòi hỏi:",
       options: [
-        "Tái lập chế độ thuộc địa",
-        "Cải cách ruộng đất 1953–1956",
-        "Chuyển sang kinh tế thị trường định hướng XHCN (từ 1986)",
-        "Tổng động viên toàn quốc 1946",
+        "Tuyên truyền chung; thiếu cơ chế pháp lý, thiếu thiết chế bảo vệ hiệu quả.",
+        "Hệ thống luật minh bạch, có thể dự đoán; cơ chế bảo vệ–thi hành hữu hiệu.",
+        "Chuyển giao toàn bộ sang toà án quốc tế; giảm vai trò toà án quốc gia.",
+        "Đặt ngoại lệ tuỳ tiện; ưu tiên áp dụng linh hoạt theo từng vụ việc riêng.",
       ],
-      correct: 2,
+      correct: 1,
       explanation:
-        "Đổi mới 1986: chuyển sang kinh tế thị trường định hướng XHCN, hiện đại hóa quản trị nhà nước.",
+        "Quyền được bảo đảm khi được hiến định, luật định và có thiết chế thi hành, bảo vệ hiệu quả trong nước.",
     },
     {
       id: 18,
-      question:
-        "Điểm liên tục xuyên suốt 1945–nay trong xây dựng nhà nước kiểu mới là gì?",
+      question: "Quy định nào mâu thuẫn với nguyên tắc pháp quyền XHCN:",
       options: [
-        "Vai trò lãnh đạo của Đảng bảo đảm định hướng XHCN",
-        "Tư hữu là chủ đạo",
-        "Bỏ Hiến pháp",
-        "Không hội nhập quốc tế",
+        "Mọi chủ thể bình đẳng trước pháp luật; thủ tục công bằng, minh bạch, có kiểm soát.",
+        "Thiết kế phối hợp–kiểm soát giữa các nhánh quyền lực trong một thể thống nhất.",
+        "Quy trình lập pháp minh bạch; tham vấn xã hội; trách nhiệm giải trình rõ ràng.",
+        "Miễn trừ pháp luật vĩnh viễn cho một nhóm lợi ích, vượt ngoài cơ chế kiểm soát.",
       ],
-      correct: 0,
+      correct: 3,
       explanation:
-        "Xuyên suốt 1945–nay, Đảng lãnh đạo bảo đảm định hướng XHCN trong toàn bộ hệ thống chính trị.",
+        "Miễn trừ pháp luật vĩnh viễn cho một nhóm lợi ích phá vỡ nguyên tắc bình đẳng và kiểm soát quyền lực.",
     },
     {
       id: 19,
       question:
-        "Luận đề 'đối kháng giai cấp mất đi → nhà nước thu hẹp chức năng' phản ánh đúng khi nào?",
+        "Quan hệ giữa dân chủ và pháp luật trong NNXHCN được diễn đạt đúng là:",
       options: [
-        "Mâu thuẫn xã hội tăng cao",
-        "Nền tảng kinh tế–xã hội phát triển, phúc lợi mở rộng, pháp quyền vững và tham gia xã hội sâu rộng",
-        "Xung đột lợi ích gay gắt hơn",
-        "Bất bình đẳng tăng",
+        "Dân chủ thay thế pháp luật; cơ chế cưỡng hành trở nên không cần thiết.",
+        "Pháp luật thay thế dân chủ; giảm yêu cầu tham gia và phản biện xã hội.",
+        "Dân chủ là mục tiêu–phương thức; pháp luật là công cụ chuẩn tắc để hiện thực.",
+        "Dân chủ chỉ là khẩu hiệu; cốt lõi là hiệu quả hành chính thuần tuý.",
       ],
-      correct: 1,
+      correct: 2,
       explanation:
-        "Khi đối kháng giai cấp thu hẹp nhờ phát triển kinh tế–xã hội, phúc lợi mở rộng, pháp quyền vững, dân chủ tham gia sâu, thì chức năng cưỡng chế của nhà nước thu hẹp dần.",
+        "Dân chủ là mục tiêu và phương thức, pháp luật là công cụ chuẩn tắc để bảo đảm kỷ cương và hiệu lực cho dân chủ.",
     },
     {
       id: 20,
       question:
-        "Khung cải cách để hiện đại hóa nhà nước pháp quyền XHCN phù hợp KTTT định hướng XHCN nên ưu tiên điều gì?",
+        "“Tiệm cận tàn lụi” của nhà nước trong triển vọng CNXH hàm ý rằng:",
       options: [
-        "Giảm kiểm soát quyền lực",
-        "Hoàn thiện pháp luật chuẩn tắc–khả thi; số hóa quản trị; tăng minh bạch–giải trình; kiểm soát quyền lực hiệu quả; bảo đảm quyền con người & an sinh bền vững",
-        "Chỉ đẩy mạnh tăng trưởng",
-        "Tập trung vào hình thức",
+        "Xoá ngay nhà nước sau cách mạng; chuyển toàn quyền cho cộng đồng tự quản.",
+        "Khi đối kháng giai cấp mất dần, nhà nước thu hẹp cưỡng chế, tăng tự quản xã hội.",
+        "Chuyển toàn bộ quyền lực cho thị trường; giảm vai trò pháp luật và thể chế.",
+        "Nhà nước hoá toàn diện mọi lĩnh vực; duy trì cưỡng chế để bảo đảm đồng nhất.",
       ],
       correct: 1,
       explanation:
-        "Khung cải cách gồm: pháp luật chuẩn tắc–khả thi, chuyển đổi số quản trị, minh bạch–giải trình, kiểm soát quyền lực, bảo đảm quyền con người & an sinh bền vững.",
+        "Luận đề lịch sử: khi đối kháng giai cấp tiêu tan dần, chức năng cưỡng chế của nhà nước thu hẹp, tự quản xã hội và pháp chế trưởng thành.",
     },
   ];
 
