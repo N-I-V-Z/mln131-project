@@ -137,13 +137,14 @@ const PartyRole = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
-            <span className="bg-gradient-to-r from-rose-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-red-400 bg-clip-text text-transparent drop-shadow-md">
               Vai trò của Đảng
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 font-medium">
+          <p className="text-lg md:text-xl text-gray-200 font-medium">
             trong Nhà nước Pháp quyền XHCN
           </p>
+
         </div>
 
         <div className="flex justify-center">
